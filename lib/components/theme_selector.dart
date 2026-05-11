@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class LanguageSelector extends StatelessWidget {
-  const LanguageSelector({super.key});
+class ThemeSelector extends StatelessWidget {
+  const ThemeSelector({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +10,7 @@ class LanguageSelector extends StatelessWidget {
       spacing: 16,
       children: [
         Text(
-          "اللغة",
+          "المظهر",
           style: TextStyle(
             fontFamily: "Baloo Bhaijaan 2",
             fontSize: 16,
@@ -22,9 +22,10 @@ class LanguageSelector extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
+                height: 140,
                 padding: const EdgeInsets.symmetric(
                   vertical: 16,
-                  horizontal: 24,
+                  horizontal: 8,
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
@@ -33,13 +34,13 @@ class LanguageSelector extends StatelessWidget {
                 child: Column(
                   spacing: 16,
                   children: [
-                    Image(
-                      image: AssetImage("assets/images/usa_flag.png"),
-                      width: 120,
-                      height: 80,
+                    Expanded(
+                      child: Image(
+                        image: AssetImage("assets/images/light_theme.png"),
+                      ),
                     ),
                     Text(
-                      "English",
+                      "فاتح",
                       style: TextStyle(
                         fontFamily: "Baloo Bhaijaan 2",
                         fontSize: 16,
@@ -52,9 +53,10 @@ class LanguageSelector extends StatelessWidget {
             ),
             Expanded(
               child: Container(
+                height: 140,
                 padding: const EdgeInsets.symmetric(
                   vertical: 16,
-                  horizontal: 24,
+                  horizontal: 8,
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
@@ -63,13 +65,44 @@ class LanguageSelector extends StatelessWidget {
                 child: Column(
                   spacing: 16,
                   children: [
-                    Image(
-                      image: AssetImage("assets/images/egypt_flag.png"),
-                      width: 120,
-                      height: 80,
+                    Expanded(
+                      child: Image(
+                        image: AssetImage("assets/images/dark_theme.png"),
+                      ),
                     ),
                     Text(
-                      "العربية",
+                      "داكن",
+                      style: TextStyle(
+                        fontFamily: "Baloo Bhaijaan 2",
+                        fontSize: 16,
+                        fontWeight: FontWeight(500),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                height: 140,
+                padding: const EdgeInsets.symmetric(
+                  vertical: 16,
+                  horizontal: 8,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  border: BoxBorder.all(color: Colors.grey),
+                ),
+                child: Column(
+                  spacing: 16,
+                  children: [
+                    Expanded(
+                      child: Image(
+                        image: AssetImage("assets/images/auto_theme.png"),
+                      ),
+                    ),
+                    Text(
+                      "تلقائي",
                       style: TextStyle(
                         fontFamily: "Baloo Bhaijaan 2",
                         fontSize: 16,
