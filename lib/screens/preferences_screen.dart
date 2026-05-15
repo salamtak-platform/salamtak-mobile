@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:salamtak/assets/app_colors.dart';
 import 'package:salamtak/components/language_selector.dart';
 import 'package:salamtak/components/main_button.dart';
 import 'package:salamtak/components/theme_selector.dart';
+import 'package:salamtak/screens/onboarding_one_screen.dart';
 
 class PreferencesScreen extends StatelessWidget {
   const PreferencesScreen({super.key});
@@ -9,6 +11,7 @@ class PreferencesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.naturalWhite,
       appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -31,7 +34,19 @@ class PreferencesScreen extends StatelessWidget {
             ThemeSelector(),
             SizedBox(height: 80),
 
-            MainButton(),
+            MainButton(
+              title: "تطبيق الإعدادات",
+              buttonFunction: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return OnboardingOneScreen();
+                    },
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:salamtak/screens/continue_with_phone.dart';
 // import 'package:salamtak/screens/onboarding_one_screen.dart';
 // import 'package:salamtak/screens/preferences_screen.dart';
 import 'package:salamtak/screens/splash_screen.dart';

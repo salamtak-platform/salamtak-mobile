@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:salamtak/components/dot.dart';
 import 'package:salamtak/components/main_button.dart';
 import 'package:salamtak/assets/app_colors.dart';
-import 'package:salamtak/screens/onboarding_two_screen.dart';
+import 'package:salamtak/screens/onboarding_four_screen.dart';
 
-class OnboardingOneScreen extends StatelessWidget {
-  const OnboardingOneScreen({super.key});
+class OnboardingThreeScreen extends StatelessWidget {
+  const OnboardingThreeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +110,7 @@ class OnboardingOneScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return const OnboardingTwoScreen();
+                        return const OnboardingFourScreen();
                       },
                     ),
                   ),

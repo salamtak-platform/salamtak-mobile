@@ -2,12 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:salamtak/assets/app_colors.dart';
 
 class MainButton extends StatelessWidget {
-  const MainButton({super.key});
-
+  const MainButton({
+    super.key,
+    required this.title,
+    required this.buttonFunction,
+  });
+  final String title;
+  final VoidCallback buttonFunction;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: buttonFunction,
       child: Expanded(
         child: Container(
           height: 48,
@@ -18,7 +23,7 @@ class MainButton extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              "تطبيق الإعدادات",
+              title,
               style: TextStyle(
                 fontFamily: "Baloo Bhaijaan 2",
                 fontSize: 20,
