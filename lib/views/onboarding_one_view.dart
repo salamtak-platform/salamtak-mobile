@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:salamtak/components/dot.dart';
 import 'package:salamtak/components/main_button.dart';
 import 'package:salamtak/assets/app_colors.dart';
-import 'package:salamtak/screens/onboarding_three_screen.dart';
+import 'package:salamtak/views/continue_with_phone_view.dart';
+import 'package:salamtak/views/onboarding_two_view.dart';
 
-class OnboardingTwoScreen extends StatelessWidget {
-  const OnboardingTwoScreen({super.key});
+class OnboardingOneView extends StatelessWidget {
+  const OnboardingOneView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -104,17 +105,7 @@ class OnboardingTwoScreen extends StatelessWidget {
                     fontWeight: FontWeight(500),
                   ),
                 ),
-                MainButton(
-                  title: "التالي",
-                  buttonFunction: Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return const OnboardingThreeScreen();
-                      },
-                    ),
-                  ),
-                ),
+                MainButton(title: "التالي", pushView: ContinueWithPhoneView()),
               ],
             ),
           ),

@@ -3,10 +3,10 @@ import 'package:salamtak/assets/app_colors.dart';
 import 'package:salamtak/components/language_selector.dart';
 import 'package:salamtak/components/main_button.dart';
 import 'package:salamtak/components/theme_selector.dart';
-import 'package:salamtak/screens/onboarding_one_screen.dart';
+import 'package:salamtak/views/onboarding_one_view.dart';
 
-class PreferencesScreen extends StatelessWidget {
-  const PreferencesScreen({super.key});
+class PreferencesView extends StatelessWidget {
+  const PreferencesView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,19 +34,7 @@ class PreferencesScreen extends StatelessWidget {
             ThemeSelector(),
             SizedBox(height: 80),
 
-            MainButton(
-              title: "تطبيق الإعدادات",
-              buttonFunction: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return OnboardingOneScreen();
-                    },
-                  ),
-                );
-              },
-            ),
+            MainButton(title: "تطبيق الإعدادات", pushView: OnboardingOneView()),
           ],
         ),
       ),

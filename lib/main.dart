@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:salamtak/screens/continue_with_phone.dart';
 // import 'package:salamtak/screens/onboarding_one_screen.dart';
 // import 'package:salamtak/screens/preferences_screen.dart';
-import 'package:salamtak/screens/splash_screen.dart';
+import 'package:salamtak/views/splash_view.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 
@@ -33,7 +33,7 @@ class SalamtakApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
-      home: const SplashScreen(),
+      home: const SplashView(),
     );
   }
 }
