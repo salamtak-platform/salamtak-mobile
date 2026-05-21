@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:salamtak/components/dot.dart';
 import 'package:salamtak/components/main_button.dart';
 import 'package:salamtak/assets/app_colors.dart';
+import 'package:salamtak/components/onboarding_image_container.dart';
+import 'package:salamtak/components/view_indicator.dart';
 import 'package:salamtak/views/continue_with_phone_view.dart';
 import 'package:salamtak/views/onboarding_two_view.dart';
 
@@ -13,7 +16,7 @@ class OnboardingOneView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.patientPrimary,
       appBar: AppBar(
-        leading: Icon(Icons.arrow_right),
+        centerTitle: false,
         title: Text(
           "تخطي",
           style: TextStyle(
@@ -28,59 +31,10 @@ class OnboardingOneView extends StatelessWidget {
       body: Column(
         spacing: 32,
         children: [
-          Transform.translate(
-            offset: const Offset(0, -1),
-            child: Container(
-              width: double.infinity,
-              height: 300,
-              decoration: BoxDecoration(
-                color: AppColors.naturalWhite,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(50),
-                  bottomRight: Radius.circular(50),
-                ),
-              ),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 32,
-                      right: 16,
-                      left: 16,
-                    ),
-                    child: Expanded(
-                      child: Image(
-                        image: AssetImage(
-                          "assets/images/patient_onboarding_1.png",
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+          OnboardingImageContainer(
+            imagePath: "assets/images/patient_onboarding_1.png",
           ),
-          Container(
-            height: 40,
-            width: 120,
-            decoration: BoxDecoration(
-              color: AppColors.naturalWhite,
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Row(
-                spacing: 16,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Dot(isOpened: false),
-                  Dot(isOpened: false),
-                  Dot(isOpened: false),
-                  Dot(isOpened: true),
-                ],
-              ),
-            ),
-          ),
+          ViewIndicator(selectedView: [true, false, false, false]),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
@@ -105,7 +59,7 @@ class OnboardingOneView extends StatelessWidget {
                     fontWeight: FontWeight(500),
                   ),
                 ),
-                MainButton(title: "التالي", pushView: ContinueWithPhoneView()),
+                MainButton(title: "التالي", pushView: OnboardingTwoView()),
               ],
             ),
           ),

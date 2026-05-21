@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:salamtak/assets/app_colors.dart';
 
-class MainButton extends StatelessWidget {
-  const MainButton({super.key, required this.title, required this.pushView});
+class SocialButton extends StatelessWidget {
+  const SocialButton({super.key, required this.title, required this.pushView});
   final String title;
   final Widget pushView;
   @override
