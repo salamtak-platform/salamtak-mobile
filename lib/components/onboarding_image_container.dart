@@ -3,7 +3,14 @@ import 'package:salamtak/assets/app_colors.dart';
 
 class OnboardingImageContainer extends StatelessWidget {
   final String imagePath;
-  const OnboardingImageContainer({super.key, required this.imagePath});
+  // final double imageHeight;
+  // final double imageWidth;
+  const OnboardingImageContainer({
+    super.key,
+    required this.imagePath,
+    // required this.imageHeight,
+    // required this.imageWidth,
+  });
 
   @override
   Widget build(BuildContext context) {

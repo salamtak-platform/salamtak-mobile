@@ -33,6 +33,8 @@ class OnboardingOneView extends StatelessWidget {
         children: [
           OnboardingImageContainer(
             imagePath: "assets/images/patient_onboarding_1.png",
+            // imageWidth: 343,
+            // imageHeight: 212,
           ),
           ViewIndicator(selectedView: [true, false, false, false]),
           Padding(

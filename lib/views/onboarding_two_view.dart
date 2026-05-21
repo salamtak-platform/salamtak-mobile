@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:salamtak/assets/app_colors.dart';
 import 'package:salamtak/components/main_button.dart';
+import 'package:salamtak/components/onboarding_body.dart';
 import 'package:salamtak/components/onboarding_image_container.dart';
 import 'package:salamtak/components/view_indicator.dart';
 import 'package:salamtak/views/continue_with_phone_view.dart';
+import 'package:salamtak/views/onboarding_three_view.dart';
 
 class OnboardingTwoView extends StatelessWidget {
   const OnboardingTwoView({super.key});
@@ -31,52 +33,18 @@ class OnboardingTwoView extends StatelessWidget {
           OnboardingImageContainer(
             imagePath: "assets/images/patient_onboarding_2.png",
           ),
-          ViewIndicator(selectedView: [true, false, false, false]),
+          ViewIndicator(selectedView: [false, true, false, false]),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: OnBoardingBody(),
+            child: OnBoardingBody(
+              title: "كمل رحلة علاجك بسهولة من غير لف كتير!",
+              description:
+                  "بدوسة زرار تقدر تحجز كل الأشعات والتحاليل وتطلب الأدوية اللي الطبيب كتبهالك في الروشتة مع شركائنا المتميزين.",
+            ),
           ),
+          MainButton(title: "التالي", pushView: OnboardingThreeView()),
         ],
       ),
-    );
-  }
-}
-
-class OnBoardingBody extends StatelessWidget {
-  final String title;
-  final String description;
-  const OnBoardingBody({
-    super.key,
-    required this.title,
-    required this.description,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      spacing: 24,
-      children: [
-        Text(
-          title,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: AppColors.naturalWhite,
-            fontFamily: "Baloo Bhaijaan 2",
-            fontSize: 24,
-          ),
-        ),
-        Text(
-          description,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: AppColors.naturalWhite,
-            fontFamily: "Baloo Bhaijaan 2",
-            fontSize: 16,
-            fontWeight: FontWeight(500),
-          ),
-        ),
-        MainButton(title: "التالي", pushView: ContinueWithPhoneView()),
-      ],
     );
   }
 }
