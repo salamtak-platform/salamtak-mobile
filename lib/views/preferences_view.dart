@@ -38,6 +38,9 @@ class PreferencesView extends StatelessWidget {
               MainButton(
                 title: "تطبيق الإعدادات",
                 pushView: OnboardingOneView(),
+                status: "primary",
+                isLeftIcon: false,
+                isRightIcon: false,
               ),
             ],
           ),

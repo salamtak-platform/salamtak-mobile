@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:salamtak/assets/app_colors.dart';
-import 'package:salamtak/components/main_button.dart';
-import 'package:salamtak/components/onboarding_body.dart';
+import 'package:salamtak/components/custom_onboarding_body.dart';
 import 'package:salamtak/components/onboarding_image_container.dart';
 import 'package:salamtak/components/view_indicator.dart';
-import 'package:salamtak/views/continue_with_phone_view.dart';
+import 'package:salamtak/views/onboarding_one_view.dart';
 import 'package:salamtak/views/onboarding_three_view.dart';
 
 class OnboardingTwoView extends StatelessWidget {
@@ -27,23 +26,31 @@ class OnboardingTwoView extends StatelessWidget {
         backgroundColor: AppColors.naturalWhite,
         elevation: 0.0,
       ),
-      body: Column(
-        spacing: 32,
-        children: [
-          OnboardingImageContainer(
-            imagePath: "assets/images/patient_onboarding_2.png",
-          ),
-          ViewIndicator(selectedView: [false, true, false, false]),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: OnBoardingBody(
+      body: SafeArea(
+        child: Column(
+          children: [
+            OnboardingImageContainer(
+              imagePath: "assets/images/patient_onboarding_2.png",
+              // imageWidth: 343,
+              // imageHeight: 212,
+            ),
+            SizedBox(height: 32),
+            ViewIndicator(selectedView: [false, true, false, false]),
+            SizedBox(height: 32),
+            CustomOnboardingBody(
               title: "كمل رحلة علاجك بسهولة من غير لف كتير!",
               description:
                   "بدوسة زرار تقدر تحجز كل الأشعات والتحاليل وتطلب الأدوية اللي الطبيب كتبهالك في الروشتة مع شركائنا المتميزين.",
+              buttonsCount: 2,
+              buttonOneTitle: "التالي",
+              buttonTwoTitle: "السابق",
+              buttonOneStatus: "secondary",
+              buttonTwoStatus: "secondary strocked",
+              buttonOnePushView: OnboardingThreeView(),
+              buttonTwoPushView: OnboardingOneView(),
             ),
-          ),
-          MainButton(title: "التالي", pushView: OnboardingThreeView()),
-        ],
+          ],
+        ),
       ),
     );
   }

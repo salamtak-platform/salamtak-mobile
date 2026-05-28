@@ -129,10 +129,10 @@ class ContinueWithPhoneView extends StatelessWidget {
               ],
             ),
             SizedBox(height: 32),
-            MainButton(
-              title: "المتابعة باستخدام رقم الهاتف",
-              pushView: MobileOtpView(),
-            ),
+            // MainButton(
+            //   title: "المتابعة باستخدام رقم الهاتف",
+            //   pushView: MobileOtpView(),
+            // ),
             SizedBox(height: 24),
 
             Row(

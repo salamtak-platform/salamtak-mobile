@@ -30,7 +30,9 @@ class OnboardingImageContainer extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 32, right: 16, left: 16),
-              child: Expanded(child: Image(image: AssetImage(imagePath))),
+              child: Expanded(
+                child: Center(child: Image(image: AssetImage(imagePath))),
+              ),
             ),
           ],
         ),
