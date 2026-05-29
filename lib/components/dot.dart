@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:salamtak/assets/app_colors.dart';
 
 class Dot extends StatelessWidget {
-  const Dot({super.key, required this.isOpened});
-  final bool isOpened;
+  const Dot({super.key, required this.isSelected});
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
-    final Color color = isOpened
+    final Color color = isSelected
         ? AppColors.patientPrimary
         : AppColors.patientPrimaryLight3;
     return Container(

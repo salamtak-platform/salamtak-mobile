@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:salamtak/assets/app_colors.dart';
-import 'package:salamtak/screens/preferences_screen.dart';
+import 'package:salamtak/views/preferences_view.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+class SplashView extends StatefulWidget {
+  const SplashView({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<SplashView> createState() => _SplashViewState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
         context,
         MaterialPageRoute(
           builder: (context) {
-            return const PreferencesScreen();
+            return const PreferencesView();
           },
         ),
       );
