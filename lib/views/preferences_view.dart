@@ -13,7 +13,7 @@ class PreferencesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.naturalWhite,
-      appBar: AppBar(),
+      appBar: AppBar(backgroundColor: AppColors.naturalWhite, elevation: 0),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
