@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:localization/localization.dart';
 import 'package:patient_app/app_colors.dart';
+import 'package:patient_app/components/main_button.dart';
+import 'package:patient_app/views/mobile_otp_view.dart';
 
 class ContinueWithPhoneView extends StatelessWidget {
   const ContinueWithPhoneView({super.key});
@@ -18,7 +21,9 @@ class ContinueWithPhoneView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image(
-              image: AssetImage("assets/images/patient_logo.png"),
+              image: AssetImage(
+                "assets/images/patient_logo.png",
+              ),
               width: 64,
               height: 56,
             ),
@@ -43,10 +48,9 @@ class ContinueWithPhoneView extends StatelessWidget {
               ),
             ),
             SizedBox(height: 24),
-
             Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              spacing: 16,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 8,
               children: [
                 Text(
                   "رقم المحمول",
@@ -60,6 +64,48 @@ class ContinueWithPhoneView extends StatelessWidget {
                 Row(
                   spacing: 8,
                   children: [
+                    Expanded(
+                        child: TextField(
+                      decoration: InputDecoration(
+                          contentPadding: EdgeInsetsDirectional.symmetric(
+                              vertical: 0, horizontal: 0),
+                          prefixIcon: Padding(
+                            padding: const EdgeInsetsDirectional.only(
+                              start: 16,
+                              end: 14,
+                            ),
+                            child: FaIcon(
+                              FontAwesomeIcons.phoneFlip,
+                              size: 24,
+                            ),
+                          ),
+                          prefixIconColor: AppColors.naturalDarkGrey,
+                          prefixIconConstraints:
+                              const BoxConstraints(minWidth: 24, minHeight: 24),
+                          hint: Text(
+                            SharedLocalizations.of(context)!.inputPhoneHint,
+                            style: TextStyle(
+                              fontFamily: "Baloo Bhaijaan 2",
+                              fontSize: 14,
+                              fontWeight: FontWeight(500),
+                              color: AppColors.naturalDarkGrey,
+                            ),
+                          ),
+                          border: OutlineInputBorder(),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: BorderSide(
+                              color: AppColors.naturalDarkGrey,
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: BorderSide(
+                              width: 2,
+                              color: AppColors.patientPrimary,
+                            ),
+                          )),
+                    )),
                     Container(
                       height: 48,
                       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -71,10 +117,10 @@ class ContinueWithPhoneView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         spacing: 8,
                         children: [
-                          Image(
-                            image: AssetImage("assets/images/egypt_flag.png"),
-                            width: 36,
-                            height: 24,
+                          FaIcon(
+                            FontAwesomeIcons.chevronDown,
+                            weight: 24,
+                            color: AppColors.naturalDarkGrey,
                           ),
                           Text(
                             "+20",
@@ -86,45 +132,13 @@ class ContinueWithPhoneView extends StatelessWidget {
                               color: AppColors.naturalDarkGrey,
                             ),
                           ),
-                          FaIcon(
-                            FontAwesomeIcons.chevronDown,
-                            weight: 24,
-                            color: AppColors.naturalDarkGrey,
+                          Image(
+                            image: AssetImage("assets/images/egypt_flag.png",
+                                package: 'ui_kit'),
+                            width: 36,
+                            height: 24,
                           ),
                         ],
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: 48,
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          border: BoxBorder.all(
-                            color: AppColors.naturalDarkGrey,
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          spacing: 16,
-                          children: [
-                            Text(
-                              "مثال: 1234567890",
-                              style: TextStyle(
-                                package: 'ui_kit',
-                                fontFamily: "Baloo Bhaijaan 2",
-                                fontSize: 14,
-                                fontWeight: FontWeight(500),
-                                color: AppColors.naturalDarkGrey,
-                              ),
-                            ),
-                            FaIcon(
-                              FontAwesomeIcons.phoneFlip,
-                              weight: 20,
-                              color: AppColors.naturalDarkGrey,
-                            ),
-                          ],
-                        ),
                       ),
                     ),
                   ],
@@ -132,12 +146,14 @@ class ContinueWithPhoneView extends StatelessWidget {
               ],
             ),
             SizedBox(height: 32),
-            // MainButton(
-            //   title: "المتابعة باستخدام رقم الهاتف",
-            //   pushView: MobileOtpView(),
-            // ),
-            SizedBox(height: 24),
-
+            MainButton(
+              status: "primary",
+              title: "المتابعة باستخدام رقم الهاتف",
+              pushView: MobileOtpView(),
+              isLeftIcon: false,
+              isRightIcon: false,
+            ),
+            SizedBox(height: 16),
             Row(
               spacing: 8,
               children: [
@@ -158,7 +174,58 @@ class ContinueWithPhoneView extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 24),
+            SizedBox(height: 16),
+            Row(
+              children: [
+                SocialButton(
+                  platform: "google",
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SocialButton extends StatelessWidget {
+  final String platform;
+
+  const SocialButton({
+    super.key,
+    required this.platform,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        height: 48,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            color: AppColors.naturalWhite,
+            border: BoxBorder.all(
+              color: AppColors.naturalLightGray,
+              width: 1,
+            )),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          spacing: 8,
+          children: [
+            FaIcon(
+              FontAwesomeIcons.google,
+              color: AppColors.alertError,
+            ),
+            Text(
+              SharedLocalizations.of(context)!.continueWithGoogleButton,
+              style: TextStyle(
+                fontFamily: "Baloo Bhaijaan 2",
+                fontSize: 16,
+                fontWeight: FontWeight(600),
+                color: AppColors.naturalBlack,
+              ),
+            ),
           ],
         ),
       ),
