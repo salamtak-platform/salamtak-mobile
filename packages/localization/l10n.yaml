@@ -1,0 +1,5 @@
+arb-dir: l10n
+template-arb-file: shared_en.arb
+output-localization-file: shared_localizations.dart
+output-class: SharedLocalizations
+output-dir: lib/src/generated

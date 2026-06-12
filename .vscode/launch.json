@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Patient App",
+            "type": "dart",
+            "request": "launch",
+            "program": "apps/patient_app/lib/main.dart"
+        },
+        {
+            "name": "Provider App",
+            "type": "dart",
+            "request": "launch",
+            "program": "apps/provider_app/lib/main.dart"
+        }
+    ]
+}
