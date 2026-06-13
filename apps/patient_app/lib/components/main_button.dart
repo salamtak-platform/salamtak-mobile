@@ -4,26 +4,26 @@ import 'package:patient_app/app_colors.dart';
 
 class MainButton extends StatelessWidget {
   final String title;
-  final Widget pushView;
   final String status;
   final bool isLeftIcon;
   final bool isRightIcon;
+  final String route;
 
   const MainButton({
     super.key,
     required this.title,
-    required this.pushView,
     required this.status,
     required this.isLeftIcon,
     required this.isRightIcon,
+    required this.route,
   });
 
   List<Color> getColor(String status) {
     List<Color> colors = [];
-    if (status == "primary" || status == "secondary strocked") {
+    if (status == "primary") {
       colors.add(AppColors.patientPrimary);
       colors.add(AppColors.naturalWhite);
-    } else if (status == "secondary") {
+    } else if (status == "secondary" || status == "secondary strocked") {
       colors.add(AppColors.naturalWhite);
       colors.add(AppColors.patientPrimary);
     }
@@ -35,14 +35,7 @@ class MainButton extends StatelessWidget {
     List<Color> colors = getColor(status);
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return pushView;
-            },
-          ),
-        );
+        Navigator.pushNamed(context, route);
       },
       child: Container(
         height: 48,
@@ -50,7 +43,7 @@ class MainButton extends StatelessWidget {
           color: colors[0],
           borderRadius: BorderRadius.circular(8),
           border: status == "secondary strocked"
-              ? Border.all(color: AppColors.naturalWhite, width: 2)
+              ? Border.all(color: colors[1], width: 1)
               : null,
         ),
         child: Center(

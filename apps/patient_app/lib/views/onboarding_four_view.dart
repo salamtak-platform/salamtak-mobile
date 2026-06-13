@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:localization/localization.dart';
 import 'package:patient_app/app_colors.dart';
 import 'package:patient_app/components/custom_onboarding_body.dart';
 import 'package:patient_app/components/onboarding_image_container.dart';
 import 'package:patient_app/components/view_indicator.dart';
+import 'package:patient_app/src/generated/patient_localizations.dart';
 import 'package:patient_app/views/continue_with_phone_view.dart';
 import 'package:patient_app/views/onboarding_three_view.dart';
 
 class OnboardingFourView extends StatelessWidget {
+  static String id = "OnboardingFourView";
   const OnboardingFourView({super.key});
 
   @override
@@ -38,16 +41,16 @@ class OnboardingFourView extends StatelessWidget {
             ViewIndicator(selectedView: [false, false, false, true]),
             SizedBox(height: 32),
             CustomOnboardingBody(
-              title: "مع حكيم AI، هتلاقي إجابات على أسئلتك طوال الـ 24 ساعة!",
-              description:
-                  "تقدر تسأل حكيم AI على أي حاجة بخصوص صحتك وهيجاوب عليك إجابات موثوقة 100% من غير ما تحتاج تدور كتير.",
+              title: PatientLocalizations.of(context)!.onboardingFourTitle,
+              description: PatientLocalizations.of(context)!.onboardingFourBody,
               buttonsCount: 2,
-              buttonOneTitle: "ابدأ الآن!",
-              buttonTwoTitle: "السابق",
-              buttonOneStatus: "secondary",
-              buttonTwoStatus: "secondary strocked",
-              buttonOnePushView: ContinueWithPhoneView(),
-              buttonTwoPushView: OnboardingThreeView(),
+              mainButtonTitle: SharedLocalizations.of(context)!.onboardingNext,
+              secondaryButtonTitle:
+                  SharedLocalizations.of(context)!.onboardingPrev,
+              mainButtonStatus: "secondary",
+              secondaryButtonStatus: "secondary strocked",
+              mainRoute: ContinueWithPhoneView.id,
+              secondaryRoute: OnboardingThreeView.id,
             ),
           ],
         ),

@@ -3,11 +3,14 @@ import 'package:patient_app/app_colors.dart';
 import 'package:patient_app/components/custom_onboarding_body.dart';
 import 'package:patient_app/components/onboarding_image_container.dart';
 import 'package:patient_app/components/view_indicator.dart';
+import 'package:patient_app/src/generated/patient_localizations.dart';
+import 'package:patient_app/src/generated/patient_localizations_ar.dart';
 import 'package:patient_app/views/onboarding_one_view.dart';
 import 'package:patient_app/views/onboarding_three_view.dart';
 import 'package:localization/localization.dart';
 
 class OnboardingTwoView extends StatelessWidget {
+  static String id = "OnboardingTwoView";
   const OnboardingTwoView({super.key});
 
   @override
@@ -39,16 +42,16 @@ class OnboardingTwoView extends StatelessWidget {
             ViewIndicator(selectedView: [false, true, false, false]),
             SizedBox(height: 32),
             CustomOnboardingBody(
-              title: "كمل رحلة علاجك بسهولة من غير لف كتير!",
-              description:
-                  "بدوسة زرار تقدر تحجز كل الأشعات والتحاليل وتطلب الأدوية اللي الطبيب كتبهالك في الروشتة مع شركائنا المتميزين.",
+              title: PatientLocalizations.of(context)!.onboardingTwoTitle,
+              description: PatientLocalizations.of(context)!.onboardingTwoBody,
               buttonsCount: 2,
-              buttonOneTitle: "التالي",
-              buttonTwoTitle: "السابق",
-              buttonOneStatus: "secondary",
-              buttonTwoStatus: "secondary strocked",
-              buttonOnePushView: OnboardingThreeView(),
-              buttonTwoPushView: OnboardingOneView(),
+              mainButtonTitle: SharedLocalizations.of(context)!.onboardingNext,
+              secondaryButtonTitle:
+                  SharedLocalizations.of(context)!.onboardingPrev,
+              mainButtonStatus: "secondary",
+              secondaryButtonStatus: "secondary strocked",
+              mainRoute: OnboardingThreeView.id,
+              secondaryRoute: OnboardingOneView.id,
             ),
           ],
         ),

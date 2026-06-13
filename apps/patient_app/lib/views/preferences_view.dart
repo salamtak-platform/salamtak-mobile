@@ -4,9 +4,9 @@ import 'package:patient_app/components/language_selector.dart';
 import 'package:patient_app/components/main_button.dart';
 import 'package:patient_app/components/theme_selector.dart';
 import 'package:localization/localization.dart';
-import 'package:patient_app/views/onboarding_one_view.dart';
 
 class PreferencesView extends StatelessWidget {
+  static String id = "PreferencesView";
   const PreferencesView({super.key});
 
   @override
@@ -35,7 +35,7 @@ class PreferencesView extends StatelessWidget {
               Spacer(flex: 1),
               MainButton(
                 title: SharedLocalizations.of(context)!.prefButton,
-                pushView: OnboardingOneView(),
+                route: "OnboardingOneView",
                 status: "primary",
                 isLeftIcon: false,
                 isRightIcon: false,

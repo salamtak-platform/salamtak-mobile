@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:localization/localization.dart';
 import 'package:patient_app/app_colors.dart';
+import 'package:patient_app/components/custom_labeled_divider.dart';
+import 'package:patient_app/components/custom_social_button.dart';
+import 'package:patient_app/components/custom_terms_privacy_notice.dart';
 import 'package:patient_app/components/main_button.dart';
-import 'package:patient_app/views/mobile_otp_view.dart';
 
 class ContinueWithPhoneView extends StatelessWidget {
+  static String id = "ContinueWithPhoneView";
   const ContinueWithPhoneView({super.key});
 
   @override
@@ -149,32 +152,14 @@ class ContinueWithPhoneView extends StatelessWidget {
             MainButton(
               status: "primary",
               title: "المتابعة باستخدام رقم الهاتف",
-              pushView: MobileOtpView(),
+              route: "MobileOtpView",
               isLeftIcon: false,
               isRightIcon: false,
             ),
-            SizedBox(height: 16),
-            Row(
-              spacing: 8,
-              children: [
-                Expanded(
-                  child: Divider(height: 1, color: AppColors.naturalLightGray),
-                ),
-                Text(
-                  "أو",
-                  style: TextStyle(
-                    package: 'ui_kit',
-                    fontFamily: "Baloo Bhaijaan 2",
-                    fontSize: 16,
-                    fontWeight: FontWeight(500),
-                  ),
-                ),
-                Expanded(
-                  child: Divider(height: 1, color: AppColors.naturalLightGray),
-                ),
-              ],
-            ),
-            SizedBox(height: 16),
+            SizedBox(height: 24),
+            CustomLabeledDivider(
+                label: SharedLocalizations.of(context)!.commonOrLabel),
+            SizedBox(height: 24),
             SizedBox(
               width: double.infinity,
               child: Row(
@@ -192,72 +177,18 @@ class ContinueWithPhoneView extends StatelessWidget {
                 ],
               ),
             ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class CustomSocialButton extends StatelessWidget {
-  final String platform;
-
-  const CustomSocialButton({
-    super.key,
-    required this.platform,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        height: 48,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            color: platform == "google"
-                ? AppColors.naturalWhite
-                : platform == "facebook"
-                    ? AppColors.otherFacebookPrimary
-                    : AppColors.naturalLightGray,
-            border: platform == "google"
-                ? BoxBorder.all(
-                    color: AppColors.naturalLightGray,
-                    width: 1,
-                  )
-                : null),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          spacing: 8,
-          children: [
-            platform == "google"
-                ? Image.asset(
-                    "assets/images/google_icon.png",
-                    package: 'ui_kit',
-                    width: 24,
-                    height: 24,
-                  )
-                : FaIcon(
-                    platform == "facebook"
-                        ? FontAwesomeIcons.facebook
-                        : FontAwesomeIcons.solidEnvelope,
-                    color: AppColors.naturalWhite,
-                    size: 24,
-                  ),
-            Text(
-              platform == "google"
-                  ? SharedLocalizations.of(context)!.continueWithGoogleButton
-                  : platform == "facebook"
-                      ? SharedLocalizations.of(context)!.continueWithFbButton
-                      : SharedLocalizations.of(context)!
-                          .continueWithEmailButton,
-              style: TextStyle(
-                  fontFamily: "Baloo Bhaijaan 2",
-                  fontSize: 16,
-                  fontWeight: FontWeight(600),
-                  color: platform == "google"
-                      ? AppColors.naturalBlack
-                      : AppColors.naturalWhite),
-            ),
+            SizedBox(height: 24),
+            CustomLabeledDivider(
+                label: SharedLocalizations.of(context)!.continueAsGuestLabel),
+            SizedBox(height: 24),
+            MainButton(
+                title: SharedLocalizations.of(context)!.continueAsGuestButton,
+                route: "SplashView",
+                status: "secondary strocked",
+                isLeftIcon: false,
+                isRightIcon: false),
+            SizedBox(height: 24),
+            CustomTermsPrivacyNotice(),
           ],
         ),
       ),

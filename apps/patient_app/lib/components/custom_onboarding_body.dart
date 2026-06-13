@@ -6,24 +6,24 @@ class CustomOnboardingBody extends StatelessWidget {
   final String title;
   final String description;
   final int buttonsCount;
-  final String buttonOneTitle;
-  final String? buttonTwoTitle;
-  final String buttonOneStatus;
-  final String? buttonTwoStatus;
-  final Widget buttonOnePushView;
-  final Widget? buttonTwoPushView;
+  final String mainButtonTitle;
+  final String? secondaryButtonTitle;
+  final String mainButtonStatus;
+  final String? secondaryButtonStatus;
+  final String mainRoute;
+  final String? secondaryRoute;
 
   const CustomOnboardingBody({
     super.key,
     required this.title,
     required this.description,
     required this.buttonsCount,
-    required this.buttonOneTitle,
-    this.buttonTwoTitle,
-    required this.buttonOnePushView,
-    this.buttonTwoPushView,
-    required this.buttonOneStatus,
-    this.buttonTwoStatus,
+    required this.mainButtonTitle,
+    this.secondaryButtonTitle,
+    required this.mainButtonStatus,
+    this.secondaryButtonStatus,
+    required this.mainRoute,
+    this.secondaryRoute,
   });
 
   @override
@@ -59,9 +59,9 @@ class CustomOnboardingBody extends StatelessWidget {
             Spacer(flex: 1),
             buttonsCount == 1
                 ? MainButton(
-                    title: buttonOneTitle,
-                    pushView: buttonOnePushView,
-                    status: buttonOneStatus,
+                    title: mainButtonTitle,
+                    route: mainRoute,
+                    status: mainButtonStatus,
                     isLeftIcon: true,
                     isRightIcon: false,
                   )
@@ -70,9 +70,9 @@ class CustomOnboardingBody extends StatelessWidget {
                       Expanded(
                         flex: 1,
                         child: MainButton(
-                          title: buttonTwoTitle!,
-                          pushView: buttonTwoPushView!,
-                          status: buttonTwoStatus!,
+                          title: secondaryButtonTitle!,
+                          route: secondaryRoute!,
+                          status: secondaryButtonStatus!,
                           isLeftIcon: false,
                           isRightIcon: true,
                         ),
@@ -81,9 +81,9 @@ class CustomOnboardingBody extends StatelessWidget {
                       Expanded(
                         flex: 2,
                         child: MainButton(
-                          title: buttonOneTitle,
-                          pushView: buttonOnePushView,
-                          status: buttonOneStatus,
+                          title: mainButtonTitle,
+                          route: mainRoute,
+                          status: mainButtonStatus,
                           isLeftIcon: true,
                           isRightIcon: false,
                         ),

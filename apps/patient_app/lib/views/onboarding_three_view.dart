@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:localization/localization.dart';
 import 'package:patient_app/app_colors.dart';
 import 'package:patient_app/components/custom_onboarding_body.dart';
 import 'package:patient_app/components/onboarding_image_container.dart';
 import 'package:patient_app/components/view_indicator.dart';
+import 'package:patient_app/src/generated/patient_localizations.dart';
 import 'package:patient_app/views/onboarding_four_view.dart';
 
 class OnboardingThreeView extends StatelessWidget {
+  static String id = "OnboardingThreeView";
   const OnboardingThreeView({super.key});
 
   @override
@@ -15,7 +18,7 @@ class OnboardingThreeView extends StatelessWidget {
       appBar: AppBar(
         centerTitle: false,
         title: Text(
-          "تخطي",
+          SharedLocalizations.of(context)!.commonSkip,
           style: TextStyle(
             color: AppColors.naturalBlack,
             fontFamily: "Baloo Bhaijaan 2",
@@ -37,16 +40,17 @@ class OnboardingThreeView extends StatelessWidget {
             ViewIndicator(selectedView: [false, false, true, false]),
             SizedBox(height: 32),
             CustomOnboardingBody(
-              title: "أنسي الورق، ملفاتك الطبية بقت كلها في جيبك!",
+              title: PatientLocalizations.of(context)!.onboardingThreeTitle,
               description:
-                  "كل الروشتات والأشعات والتحاليل وغيرهم هتلاقي منهم نسخة إلكترونية تقدر تشوفها في أي وقت والطبيب يطلع عليهم بكل سهولة.",
+                  PatientLocalizations.of(context)!.onboardingThreeBody,
               buttonsCount: 2,
-              buttonOneTitle: "التالي",
-              buttonTwoTitle: "السابق",
-              buttonOneStatus: "secondary",
-              buttonTwoStatus: "secondary strocked",
-              buttonOnePushView: OnboardingFourView(),
-              buttonTwoPushView: OnboardingThreeView(),
+              mainButtonTitle: SharedLocalizations.of(context)!.onboardingNext,
+              secondaryButtonTitle:
+                  SharedLocalizations.of(context)!.onboardingPrev,
+              mainButtonStatus: "secondary",
+              secondaryButtonStatus: "secondary strocked",
+              mainRoute: OnboardingFourView.id,
+              secondaryRoute: OnboardingThreeView.id,
             ),
           ],
         ),

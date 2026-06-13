@@ -3,6 +3,7 @@ import 'package:patient_app/app_colors.dart';
 import 'package:patient_app/views/preferences_view.dart';
 
 class SplashView extends StatefulWidget {
+  static String id = "SplashView";
   const SplashView({super.key});
 
   @override
