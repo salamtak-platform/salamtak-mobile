@@ -175,12 +175,22 @@ class ContinueWithPhoneView extends StatelessWidget {
               ],
             ),
             SizedBox(height: 16),
-            Row(
-              children: [
-                SocialButton(
-                  platform: "google",
-                ),
-              ],
+            SizedBox(
+              width: double.infinity,
+              child: Row(
+                spacing: 8,
+                children: [
+                  CustomSocialButton(
+                    platform: "google",
+                  ),
+                  CustomSocialButton(
+                    platform: "facebook",
+                  ),
+                  CustomSocialButton(
+                    platform: "email",
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -189,10 +199,10 @@ class ContinueWithPhoneView extends StatelessWidget {
   }
 }
 
-class SocialButton extends StatelessWidget {
+class CustomSocialButton extends StatelessWidget {
   final String platform;
 
-  const SocialButton({
+  const CustomSocialButton({
     super.key,
     required this.platform,
   });
@@ -204,27 +214,49 @@ class SocialButton extends StatelessWidget {
         height: 48,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
-            color: AppColors.naturalWhite,
-            border: BoxBorder.all(
-              color: AppColors.naturalLightGray,
-              width: 1,
-            )),
+            color: platform == "google"
+                ? AppColors.naturalWhite
+                : platform == "facebook"
+                    ? AppColors.otherFacebookPrimary
+                    : AppColors.naturalLightGray,
+            border: platform == "google"
+                ? BoxBorder.all(
+                    color: AppColors.naturalLightGray,
+                    width: 1,
+                  )
+                : null),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           spacing: 8,
           children: [
-            FaIcon(
-              FontAwesomeIcons.google,
-              color: AppColors.alertError,
-            ),
+            platform == "google"
+                ? Image.asset(
+                    "assets/images/google_icon.png",
+                    package: 'ui_kit',
+                    width: 24,
+                    height: 24,
+                  )
+                : FaIcon(
+                    platform == "facebook"
+                        ? FontAwesomeIcons.facebook
+                        : FontAwesomeIcons.solidEnvelope,
+                    color: AppColors.naturalWhite,
+                    size: 24,
+                  ),
             Text(
-              SharedLocalizations.of(context)!.continueWithGoogleButton,
+              platform == "google"
+                  ? SharedLocalizations.of(context)!.continueWithGoogleButton
+                  : platform == "facebook"
+                      ? SharedLocalizations.of(context)!.continueWithFbButton
+                      : SharedLocalizations.of(context)!
+                          .continueWithEmailButton,
               style: TextStyle(
-                fontFamily: "Baloo Bhaijaan 2",
-                fontSize: 16,
-                fontWeight: FontWeight(600),
-                color: AppColors.naturalBlack,
-              ),
+                  fontFamily: "Baloo Bhaijaan 2",
+                  fontSize: 16,
+                  fontWeight: FontWeight(600),
+                  color: platform == "google"
+                      ? AppColors.naturalBlack
+                      : AppColors.naturalWhite),
             ),
           ],
         ),
