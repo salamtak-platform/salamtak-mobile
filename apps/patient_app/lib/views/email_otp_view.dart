@@ -5,9 +5,9 @@ import 'package:patient_app/components/main_button.dart';
 import 'package:patient_app/components/opt_input_field.dart';
 import 'package:patient_app/views/home.dart';
 
-class MobileOtpView extends StatelessWidget {
-  static String id = "MobileOtpView";
-  const MobileOtpView({super.key});
+class EmailOtpView extends StatelessWidget {
+  static String id = "EmailOtpView";
+  const EmailOtpView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class MobileOtpView extends StatelessWidget {
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(
-              SharedLocalizations.of(context)!.verifyPhoneTitle,
+              SharedLocalizations.of(context)!.verifyEmailTitle,
               style: TextStyle(
                 fontFamily: "Baloo Bhaijaan 2",
                 fontSize: 24,
@@ -35,7 +35,8 @@ class MobileOtpView extends StatelessWidget {
               height: 16,
             ),
             Text(
-              SharedLocalizations.of(context)!.verifyPhoneBody("0123456789+"),
+              SharedLocalizations.of(context)!
+                  .verifyEmailBody("example@test.com"),
               style: TextStyle(
                 fontFamily: "Baloo Bhaijaan 2",
                 color: AppColors.naturalDarkGrey,
@@ -43,7 +44,7 @@ class MobileOtpView extends StatelessWidget {
                 fontWeight: FontWeight(500),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 32,
             ),
             OtpInputField(),

@@ -4,7 +4,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:localization/localization.dart';
 import 'package:patient_app/src/generated/patient_localizations.dart';
+import 'package:patient_app/views/add_email.dart';
 import 'package:patient_app/views/continue_with_phone_view.dart';
+import 'package:patient_app/views/email_otp_view.dart';
 import 'package:patient_app/views/home.dart';
 import 'package:patient_app/views/mobile_otp_view.dart';
 import 'package:patient_app/views/splash_view.dart';
@@ -13,7 +15,6 @@ import 'package:patient_app/views/onboarding_two_view.dart';
 import 'package:patient_app/views/onboarding_three_view.dart';
 import 'package:patient_app/views/onboarding_four_view.dart';
 import 'package:patient_app/views/preferences_view.dart';
-// import 'package:patient_app/views/splash_view.dart';
 
 // void main() {
 //   runApp(SalamtakApp());
@@ -41,12 +42,14 @@ class PatientApp extends StatelessWidget {
         SplashView.id: (context) => SplashView(),
         ContinueWithPhoneView.id: (context) => ContinueWithPhoneView(),
         MobileOtpView.id: (context) => MobileOtpView(),
+        EmailOtpView.id: (context) => EmailOtpView(),
         HomeView.id: (context) => HomeView(),
         OnboardingOneView.id: (context) => OnboardingOneView(),
         OnboardingTwoView.id: (context) => OnboardingTwoView(),
         OnboardingThreeView.id: (context) => OnboardingThreeView(),
         OnboardingFourView.id: (context) => OnboardingFourView(),
         PreferencesView.id: (context) => PreferencesView(),
+        AddEmail.id: (context) => AddEmail(),
       },
 
       locale: Locale('ar'),
@@ -67,7 +70,7 @@ class PatientApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
-      initialRoute: MobileOtpView.id,
+      initialRoute: ContinueWithPhoneView.id,
     );
   }
 }

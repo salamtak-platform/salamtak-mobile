@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-class HomeView extends StatelessWidget {
-  static String id = "HomeView";
-  const HomeView({super.key});
+class AddEmail extends StatelessWidget {
+  static String id = "AddEmail";
+
+  const AddEmail({super.key});
 
   @override
   Widget build(BuildContext context) {
