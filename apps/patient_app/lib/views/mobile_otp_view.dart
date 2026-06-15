@@ -3,7 +3,7 @@ import 'package:localization/localization.dart';
 import 'package:patient_app/app_colors.dart';
 import 'package:patient_app/components/main_button.dart';
 import 'package:patient_app/components/opt_input_field.dart';
-import 'package:patient_app/views/home.dart';
+import 'package:patient_app/views/add_email_view.dart';
 
 class MobileOtpView extends StatelessWidget {
   static String id = "MobileOtpView";
@@ -71,7 +71,7 @@ class MobileOtpView extends StatelessWidget {
                 status: "primary",
                 isLeftIcon: false,
                 isRightIcon: false,
-                route: HomeView.id,
+                route: AddEmailView.id,
               ),
             ),
           ]),

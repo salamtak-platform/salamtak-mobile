@@ -60,6 +60,8 @@
     "verifyEmailBody": "قم بإدخال الرمز المكون من 4 أرقام الذي تم إرساله إلى البريد الإلكتروني: {email}",
     "resendOtpText": "لم تستلم الرمز؟ يمكنك إعادة إرساله خلال: {seconds} ثانية",
     "verifyOtpButton": "التحقق من الرمز",
+    "createPassTitle": "أنشيء كلمة السر",
+    "inputConfPassLabel": "تأكيد كلمة السر",
     "createNewPassTitle": "إنشاء كلمة سر جديدة",
     "createNewPassButton": "إنشاء كلمة السر",
     "loginTitle": "تسجيل الدخول",

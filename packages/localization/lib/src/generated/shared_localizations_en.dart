@@ -214,5 +214,11 @@ class SharedLocalizationsEn extends SharedLocalizations {
   String get forgotPassButton => 'هل نسيت كلمة السر؟';
 
   @override
+  String get createPassTitle => 'أنشيء كلمة السر';
+
+  @override
+  String get inputConfPassLabel => 'تأكيد كلمة السر';
+
+  @override
   String get loginButton => 'تسجيل الدخول';
 }

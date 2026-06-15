@@ -64,5 +64,7 @@
     "createNewPassButton": "إنشاء كلمة السر",
     "loginTitle": "تسجيل الدخول",
     "forgotPassButton": "هل نسيت كلمة السر؟",
+    "createPassTitle": "أنشيء كلمة السر",
+    "inputConfPassLabel": "تأكيد كلمة السر",
     "loginButton": "تسجيل الدخول"
 }

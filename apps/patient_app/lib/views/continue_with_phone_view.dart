@@ -21,88 +21,93 @@ class ContinueWithPhoneView extends StatelessWidget {
         elevation: 0,
         scrolledUnderElevation: 0,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image(
-                image: AssetImage(
-                  "assets/images/patient_logo.png",
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image(
+                  image: AssetImage(
+                    "assets/images/patient_logo.png",
+                  ),
+                  width: 64,
+                  height: 56,
                 ),
-                width: 64,
-                height: 56,
-              ),
-              SizedBox(height: 24),
-              Text(
-                "انشئ حساب أو سجل الدخول",
-                style: TextStyle(
-                  package: 'ui_kit',
-                  fontFamily: "Baloo Bhaijaan 2",
-                  fontSize: 24,
-                  fontWeight: FontWeight(500),
+                SizedBox(height: 24),
+                Text(
+                  "انشئ حساب أو سجل الدخول",
+                  style: TextStyle(
+                    package: 'ui_kit',
+                    fontFamily: "Baloo Bhaijaan 2",
+                    fontSize: 24,
+                    fontWeight: FontWeight(500),
+                  ),
                 ),
-              ),
-              SizedBox(height: 16),
-              Text(
-                "يمكنك المتابعة باستخدام",
-                style: TextStyle(
-                  package: 'ui_kit',
-                  fontFamily: "Baloo Bhaijaan 2",
-                  fontSize: 16,
-                  fontWeight: FontWeight(500),
+                SizedBox(height: 16),
+                Text(
+                  "يمكنك المتابعة باستخدام",
+                  style: TextStyle(
+                    package: 'ui_kit',
+                    fontFamily: "Baloo Bhaijaan 2",
+                    fontSize: 16,
+                    fontWeight: FontWeight(500),
+                  ),
                 ),
-              ),
-              SizedBox(height: 24),
-              CustomTextField(
-                  label: SharedLocalizations.of(context)!.inputPhoneLabel,
-                  keyboardType: TextInputType.phone,
-                  prefixIconName: FontAwesomeIcons.phoneFlip,
-                  hint: SharedLocalizations.of(context)!.inputPhoneHint,
-                  type: CustomTextFieldType.phone),
-              SizedBox(height: 32),
-              MainButton(
-                status: "primary",
-                title: "المتابعة باستخدام رقم الهاتف",
-                route: "MobileOtpView",
-                isLeftIcon: false,
-                isRightIcon: false,
-              ),
-              SizedBox(height: 24),
-              CustomLabeledDivider(
-                  label: SharedLocalizations.of(context)!.commonOrLabel),
-              SizedBox(height: 24),
-              SizedBox(
-                width: double.infinity,
-                child: Row(
-                  spacing: 8,
-                  children: [
-                    CustomSocialButton(
-                      platform: "google",
-                    ),
-                    CustomSocialButton(
-                      platform: "facebook",
-                    ),
-                    CustomSocialButton(
-                      platform: "email",
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 24),
-              CustomLabeledDivider(
-                  label: SharedLocalizations.of(context)!.continueAsGuestLabel),
-              SizedBox(height: 24),
-              MainButton(
-                  title: SharedLocalizations.of(context)!.continueAsGuestButton,
-                  route: "SplashView",
-                  status: "secondary strocked",
+                SizedBox(height: 24),
+                CustomTextFormField(
+                    readOnly: false,
+                    label: SharedLocalizations.of(context)!.inputPhoneLabel,
+                    keyboardType: TextInputType.phone,
+                    prefixIconName: FontAwesomeIcons.phoneFlip,
+                    hint: SharedLocalizations.of(context)!.inputPhoneHint,
+                    type: CustomTextFieldType.phone),
+                SizedBox(height: 32),
+                MainButton(
+                  status: "primary",
+                  title: "المتابعة باستخدام رقم الهاتف",
+                  route: "MobileOtpView",
                   isLeftIcon: false,
-                  isRightIcon: false),
-              SizedBox(height: 24),
-              CustomTermsPrivacyNotice(),
-            ],
+                  isRightIcon: false,
+                ),
+                SizedBox(height: 24),
+                CustomLabeledDivider(
+                    label: SharedLocalizations.of(context)!.commonOrLabel),
+                SizedBox(height: 24),
+                SizedBox(
+                  width: double.infinity,
+                  child: Row(
+                    spacing: 8,
+                    children: [
+                      CustomSocialButton(
+                        platform: "google",
+                      ),
+                      CustomSocialButton(
+                        platform: "facebook",
+                      ),
+                      CustomSocialButton(
+                        platform: "email",
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 24),
+                CustomLabeledDivider(
+                    label:
+                        SharedLocalizations.of(context)!.continueAsGuestLabel),
+                SizedBox(height: 24),
+                MainButton(
+                    title:
+                        SharedLocalizations.of(context)!.continueAsGuestButton,
+                    route: "SplashView",
+                    status: "secondary strocked",
+                    isLeftIcon: false,
+                    isRightIcon: false),
+                SizedBox(height: 24),
+                CustomTermsPrivacyNotice(),
+              ],
+            ),
           ),
         ),
       ),

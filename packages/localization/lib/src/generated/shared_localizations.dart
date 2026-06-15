@@ -482,6 +482,18 @@ abstract class SharedLocalizations {
   /// **'هل نسيت كلمة السر؟'**
   String get forgotPassButton;
 
+  /// No description provided for @createPassTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'أنشيء كلمة السر'**
+  String get createPassTitle;
+
+  /// No description provided for @inputConfPassLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'تأكيد كلمة السر'**
+  String get inputConfPassLabel;
+
   /// No description provided for @loginButton.
   ///
   /// In en, this message translates to:

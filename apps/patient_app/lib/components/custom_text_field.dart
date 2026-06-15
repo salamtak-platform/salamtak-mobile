@@ -4,22 +4,24 @@ import 'package:patient_app/app_colors.dart';
 
 enum CustomTextFieldType { phone, other }
 
-class CustomTextField extends StatelessWidget {
+class CustomTextFormField extends StatelessWidget {
   final String label;
   final FaIconData prefixIconName;
   final String hint;
   final FaIconData? suffixIconName;
-  final TextInputType keyboardType;
+  final TextInputType? keyboardType;
   final CustomTextFieldType type;
+  final bool readOnly;
 
-  const CustomTextField({
+  const CustomTextFormField({
     super.key,
     required this.label,
-    required this.keyboardType,
+    this.keyboardType,
     required this.prefixIconName,
     this.suffixIconName,
     required this.hint,
     required this.type,
+    required this.readOnly,
   });
 
   @override
@@ -41,7 +43,7 @@ class CustomTextField extends StatelessWidget {
           spacing: 8,
           children: [
             Expanded(
-                child: TextField(
+                child: TextFormField(
               style: TextStyle(
                 fontFamily: "Baloo Bhaijaan 2",
                 fontSize: 16,
@@ -49,6 +51,7 @@ class CustomTextField extends StatelessWidget {
                 color: AppColors.naturalBlack,
               ),
               keyboardType: keyboardType,
+              readOnly: readOnly,
               decoration: InputDecoration(
                   contentPadding: EdgeInsetsDirectional.symmetric(
                       vertical: 0, horizontal: 0),
@@ -59,11 +62,23 @@ class CustomTextField extends StatelessWidget {
                     ),
                     child: FaIcon(
                       prefixIconName,
-                      size: 24,
+                      size: 20,
                     ),
                   ),
-                  prefixIconColor: AppColors.naturalDarkGrey,
+                  suffixIcon: suffixIconName != null
+                      ? Padding(
+                          padding: const EdgeInsetsDirectional.only(end: 16),
+                          child: FaIcon(
+                            suffixIconName,
+                            size: 20,
+                          ),
+                        )
+                      : null,
+                  prefixIconColor: AppColors.naturalLightGray,
                   prefixIconConstraints:
+                      const BoxConstraints(minWidth: 24, minHeight: 24),
+                  suffixIconColor: AppColors.naturalLightGray,
+                  suffixIconConstraints:
                       const BoxConstraints(minWidth: 24, minHeight: 24),
                   hint: Text(
                     hint,
@@ -78,7 +93,7 @@ class CustomTextField extends StatelessWidget {
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                     borderSide: BorderSide(
-                      color: AppColors.naturalDarkGrey,
+                      color: AppColors.naturalLightGray,
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(

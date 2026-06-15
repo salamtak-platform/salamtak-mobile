@@ -182,7 +182,7 @@ class SharedLocalizationsAr extends SharedLocalizations {
 
   @override
   String verifyPhoneBody(Object phoneNumber) {
-    return 'قم بإدخال الرمز المكون من 4 أرقام الذي تم إرساله إلى الرقم: $phoneNumber';
+    return 'قم بإدخال الرمز المكون من 4 أرقام الذي تم إرساله إلى الرقم: $phoneNumber عبر رسالة نصية \"SMS\"';
   }
 
   @override
@@ -212,6 +212,12 @@ class SharedLocalizationsAr extends SharedLocalizations {
 
   @override
   String get forgotPassButton => 'هل نسيت كلمة السر؟';
+
+  @override
+  String get createPassTitle => 'أنشيء كلمة السر';
+
+  @override
+  String get inputConfPassLabel => 'تأكيد كلمة السر';
 
   @override
   String get loginButton => 'تسجيل الدخول';
