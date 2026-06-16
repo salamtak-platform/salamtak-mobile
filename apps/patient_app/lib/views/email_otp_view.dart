@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
 import 'package:patient_app/app_colors.dart';
-import 'package:patient_app/components/main_button.dart';
+import 'package:patient_app/components/custom_main_button.dart';
 import 'package:patient_app/components/opt_input_field.dart';
 import 'package:patient_app/views/home_view.dart';
 
@@ -67,7 +67,7 @@ class EmailOtpView extends StatelessWidget {
               padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom,
               ),
-              child: MainButton(
+              child: CustomMainButton(
                 title: SharedLocalizations.of(context)!.verifyOtpButton,
                 status: "primary",
                 isLeftIcon: false,

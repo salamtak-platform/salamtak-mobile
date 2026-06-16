@@ -6,7 +6,7 @@ import 'package:patient_app/components/custom_labeled_divider.dart';
 import 'package:patient_app/components/custom_social_button.dart';
 import 'package:patient_app/components/custom_terms_privacy_notice.dart';
 import 'package:patient_app/components/custom_text_field.dart';
-import 'package:patient_app/components/main_button.dart';
+import 'package:patient_app/components/custom_main_button.dart';
 
 class ContinueWithPhoneView extends StatelessWidget {
   static String id = "ContinueWithPhoneView";
@@ -64,7 +64,7 @@ class ContinueWithPhoneView extends StatelessWidget {
                     hint: SharedLocalizations.of(context)!.inputPhoneHint,
                     type: CustomTextFieldType.phone),
                 SizedBox(height: 32),
-                MainButton(
+                CustomMainButton(
                   status: "primary",
                   title: "المتابعة باستخدام رقم الهاتف",
                   route: "MobileOtpView",
@@ -97,7 +97,7 @@ class ContinueWithPhoneView extends StatelessWidget {
                     label:
                         SharedLocalizations.of(context)!.continueAsGuestLabel),
                 SizedBox(height: 24),
-                MainButton(
+                CustomMainButton(
                     title:
                         SharedLocalizations.of(context)!.continueAsGuestButton,
                     route: "SplashView",

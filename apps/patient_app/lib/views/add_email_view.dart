@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:localization/localization.dart';
 import 'package:patient_app/app_colors.dart';
 import 'package:patient_app/components/custom_text_field.dart';
-import 'package:patient_app/components/main_button.dart';
+import 'package:patient_app/components/custom_main_button.dart';
 import 'package:patient_app/views/email_otp_view.dart';
 
 class AddEmailView extends StatelessWidget {
@@ -50,7 +50,7 @@ class AddEmailView extends StatelessWidget {
                     padding: EdgeInsets.only(
                       bottom: MediaQuery.of(context).viewInsets.bottom,
                     ),
-                    child: MainButton(
+                    child: CustomMainButton(
                       title: SharedLocalizations.of(context)!.onboardingNext,
                       status: "primary",
                       isLeftIcon: false,

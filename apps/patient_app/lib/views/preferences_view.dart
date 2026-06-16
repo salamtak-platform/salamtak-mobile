@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:patient_app/app_colors.dart';
 import 'package:patient_app/components/language_selector.dart';
-import 'package:patient_app/components/main_button.dart';
+import 'package:patient_app/components/custom_main_button.dart';
 import 'package:patient_app/components/theme_selector.dart';
 import 'package:localization/localization.dart';
 
@@ -33,7 +33,7 @@ class PreferencesView extends StatelessWidget {
               SizedBox(height: 24),
               ThemeSelector(),
               Spacer(flex: 1),
-              MainButton(
+              CustomMainButton(
                 title: SharedLocalizations.of(context)!.prefButton,
                 route: "OnboardingOneView",
                 status: "primary",

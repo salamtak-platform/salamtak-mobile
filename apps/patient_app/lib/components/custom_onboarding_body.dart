@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:patient_app/app_colors.dart';
-import 'package:patient_app/components/main_button.dart';
+import 'package:patient_app/components/custom_main_button.dart';
 
 class CustomOnboardingBody extends StatelessWidget {
   final String title;
@@ -58,7 +58,7 @@ class CustomOnboardingBody extends StatelessWidget {
             ),
             Spacer(flex: 1),
             buttonsCount == 1
-                ? MainButton(
+                ? CustomMainButton(
                     title: mainButtonTitle,
                     route: mainRoute,
                     status: mainButtonStatus,
@@ -69,7 +69,7 @@ class CustomOnboardingBody extends StatelessWidget {
                     children: [
                       Expanded(
                         flex: 1,
-                        child: MainButton(
+                        child: CustomMainButton(
                           title: secondaryButtonTitle!,
                           route: secondaryRoute!,
                           status: secondaryButtonStatus!,
@@ -80,7 +80,7 @@ class CustomOnboardingBody extends StatelessWidget {
                       SizedBox(width: 16),
                       Expanded(
                         flex: 2,
-                        child: MainButton(
+                        child: CustomMainButton(
                           title: mainButtonTitle,
                           route: mainRoute,
                           status: mainButtonStatus,
