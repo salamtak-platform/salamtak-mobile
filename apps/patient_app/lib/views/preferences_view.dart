@@ -1,5 +1,3 @@
-import 'dart:math' as console;
-
 import 'package:flutter/material.dart';
 import 'package:patient_app/app_colors.dart';
 import 'package:patient_app/components/language_selector.dart';

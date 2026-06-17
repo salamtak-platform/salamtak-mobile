@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:patient_app/app_colors.dart';
 
@@ -12,6 +13,9 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final CustomTextFieldType type;
   final bool readOnly;
+  final FormFieldValidator<String> validator;
+  final Function(String) onChanged;
+  final List<TextInputFormatter>? inputFormatters;
 
   const CustomTextFormField({
     super.key,
@@ -22,6 +26,9 @@ class CustomTextFormField extends StatelessWidget {
     required this.hint,
     required this.type,
     required this.readOnly,
+    required this.onChanged,
+    required this.validator,
+    this.inputFormatters,
   });
 
   @override
@@ -41,69 +48,82 @@ class CustomTextFormField extends StatelessWidget {
         ),
         Row(
           spacing: 8,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-                child: TextFormField(
-              style: TextStyle(
-                fontFamily: "Baloo Bhaijaan 2",
-                fontSize: 16,
-                fontWeight: FontWeight(500),
-                color: AppColors.naturalBlack,
-              ),
-              keyboardType: keyboardType,
-              readOnly: readOnly,
-              decoration: InputDecoration(
-                  contentPadding: EdgeInsetsDirectional.symmetric(
-                      vertical: 0, horizontal: 0),
-                  prefixIcon: Padding(
-                    padding: const EdgeInsetsDirectional.only(
-                      start: 16,
-                      end: 14,
+                child: Theme(
+                    data: Theme.of(context).copyWith(
+                      textSelectionTheme: TextSelectionThemeData(
+                        selectionColor: AppColors.patientPrimaryLight4,
+                        selectionHandleColor: AppColors.patientPrimary,
+                        cursorColor: AppColors.patientPrimary,
+                      ),
                     ),
-                    child: FaIcon(
-                      prefixIconName,
-                      size: 20,
-                    ),
-                  ),
-                  suffixIcon: suffixIconName != null
-                      ? Padding(
-                          padding: const EdgeInsetsDirectional.only(end: 16),
-                          child: FaIcon(
-                            suffixIconName,
-                            size: 20,
+                    child: TextFormField(
+                      inputFormatters: inputFormatters,
+                      validator: validator,
+                      style: TextStyle(
+                        fontFamily: "Baloo Bhaijaan 2",
+                        fontSize: 16,
+                        fontWeight: FontWeight(500),
+                        color: AppColors.naturalBlack,
+                      ),
+                      onChanged: onChanged,
+                      keyboardType: keyboardType,
+                      readOnly: readOnly,
+                      decoration: InputDecoration(
+                          contentPadding: EdgeInsetsDirectional.symmetric(
+                              vertical: 0, horizontal: 0),
+                          prefixIcon: Padding(
+                            padding: const EdgeInsetsDirectional.only(
+                              start: 16,
+                              end: 14,
+                            ),
+                            child: FaIcon(
+                              prefixIconName,
+                              size: 20,
+                            ),
                           ),
-                        )
-                      : null,
-                  prefixIconColor: AppColors.naturalLightGray,
-                  prefixIconConstraints:
-                      const BoxConstraints(minWidth: 24, minHeight: 24),
-                  suffixIconColor: AppColors.naturalLightGray,
-                  suffixIconConstraints:
-                      const BoxConstraints(minWidth: 24, minHeight: 24),
-                  hint: Text(
-                    hint,
-                    style: TextStyle(
-                      fontFamily: "Baloo Bhaijaan 2",
-                      fontSize: 14,
-                      fontWeight: FontWeight(500),
-                      color: AppColors.naturalDarkGrey,
-                    ),
-                  ),
-                  border: OutlineInputBorder(),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(
-                      color: AppColors.naturalLightGray,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(
-                      width: 2,
-                      color: AppColors.patientPrimary,
-                    ),
-                  )),
-            )),
+                          suffixIcon: suffixIconName != null
+                              ? Padding(
+                                  padding:
+                                      const EdgeInsetsDirectional.only(end: 16),
+                                  child: FaIcon(
+                                    suffixIconName,
+                                    size: 20,
+                                  ),
+                                )
+                              : null,
+                          prefixIconColor: AppColors.naturalLightGray,
+                          prefixIconConstraints:
+                              const BoxConstraints(minWidth: 24, minHeight: 24),
+                          suffixIconColor: AppColors.naturalLightGray,
+                          suffixIconConstraints:
+                              const BoxConstraints(minWidth: 24, minHeight: 24),
+                          hint: Text(
+                            hint,
+                            style: TextStyle(
+                              fontFamily: "Baloo Bhaijaan 2",
+                              fontSize: 14,
+                              fontWeight: FontWeight(500),
+                              color: AppColors.naturalDarkGrey,
+                            ),
+                          ),
+                          border: OutlineInputBorder(),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: BorderSide(
+                              color: AppColors.naturalLightGray,
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: BorderSide(
+                              width: 2,
+                              color: AppColors.patientPrimary,
+                            ),
+                          )),
+                    ))),
             type == CustomTextFieldType.phone
                 ? Container(
                     height: 48,
