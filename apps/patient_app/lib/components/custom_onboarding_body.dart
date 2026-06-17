@@ -71,8 +71,8 @@ class CustomOnboardingBody extends StatelessWidget {
                         flex: 1,
                         child: CustomMainButton(
                           title: secondaryButtonTitle!,
-                          route: secondaryRoute!,
-                          status: secondaryButtonStatus!,
+                          // route: secondaryRoute!,
+                          // status: secondaryButtonStatus!,
                           isLeftIcon: false,
                           isRightIcon: true,
                         ),

@@ -67,13 +67,13 @@ class EmailOtpView extends StatelessWidget {
               padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom,
               ),
-              child: CustomMainButton(
-                title: SharedLocalizations.of(context)!.verifyOtpButton,
-                status: "primary",
-                isLeftIcon: false,
-                isRightIcon: false,
-                route: HomeView.id,
-              ),
+              // child: CustomMainButton(
+              //   title: SharedLocalizations.of(context)!.verifyOtpButton,
+              //   status: "primary",
+              //   isLeftIcon: false,
+              //   isRightIcon: false,
+              //   route: HomeView.id,
+              // ),
             ),
           ]),
         ),

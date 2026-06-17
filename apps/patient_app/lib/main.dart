@@ -123,7 +123,7 @@ class PatientApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
-      initialRoute: CompleteAccount.id,
+      initialRoute: PreferencesView.id,
     );
   }
 }

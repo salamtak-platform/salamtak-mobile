@@ -65,13 +65,13 @@ class ResetPasswordView extends StatelessWidget {
                     padding: EdgeInsets.only(
                       bottom: MediaQuery.of(context).viewInsets.bottom,
                     ),
-                    child: CustomMainButton(
-                      title: SharedLocalizations.of(context)!.onboardingNext,
-                      status: "primary",
-                      isLeftIcon: false,
-                      isRightIcon: false,
-                      route: EmailOtpView.id,
-                    ),
+                    // child: CustomMainButton(
+                    //   title: SharedLocalizations.of(context)!.onboardingNext,
+                    //   status: "primary",
+                    //   isLeftIcon: false,
+                    //   isRightIcon: false,
+                    //   route: EmailOtpView.id,
+                    // ),
                   ),
                 ],
               ))),

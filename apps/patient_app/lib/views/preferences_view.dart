@@ -1,3 +1,5 @@
+import 'dart:math' as console;
+
 import 'package:flutter/material.dart';
 import 'package:patient_app/app_colors.dart';
 import 'package:patient_app/components/language_selector.dart';
@@ -34,12 +36,16 @@ class PreferencesView extends StatelessWidget {
               ThemeSelector(),
               Spacer(flex: 1),
               CustomMainButton(
-                title: SharedLocalizations.of(context)!.prefButton,
-                route: "OnboardingOneView",
-                status: "primary",
-                isLeftIcon: false,
-                isRightIcon: false,
-              ),
+                  title: SharedLocalizations.of(context)!.prefButton,
+                  state: MainButtonStates.enabled,
+                  isLeftIcon: false,
+                  isRightIcon: false,
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Button pressed')),
+                    );
+                  },
+                  style: MainButtonStyles.primary),
             ],
           ),
         ),
