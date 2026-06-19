@@ -4,31 +4,29 @@ import 'package:localization/localization.dart';
 import 'package:patient_app/app_colors.dart';
 import 'package:patient_app/components/custom_text_field.dart';
 import 'package:patient_app/components/custom_main_button.dart';
-import 'package:patient_app/views/email_otp_view.dart';
+import 'package:patient_app/features/auth/views/email_otp_view.dart';
 
-class CreatePasswordView extends StatelessWidget {
-  static String id = "AddEmail";
+class ContinueWithEmailView extends StatelessWidget {
+  static String id = "ContinueWithEmailView";
 
-  const CreatePasswordView({super.key});
+  const ContinueWithEmailView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.naturalWhite,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: AppColors.naturalWhite,
       ),
       body: SafeArea(
-          maintainBottomViewPadding: true,
           child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    SharedLocalizations.of(context)!.createPassTitle,
+                    SharedLocalizations.of(context)!.continueWithEmailTitle,
                     style: TextStyle(
                       fontFamily: "Baloo Bhaijaan 2",
                       fontSize: 24,
@@ -40,23 +38,10 @@ class CreatePasswordView extends StatelessWidget {
                   ),
                   CustomTextFormField(
                       readOnly: false,
-                      label: SharedLocalizations.of(context)!.inputPassLabel,
-                      keyboardType: TextInputType.visiblePassword,
-                      prefixIconName: FontAwesomeIcons.lock,
-                      suffixIconName: FontAwesomeIcons.eyeSlash,
-                      hint: SharedLocalizations.of(context)!.inputShownPassHint,
-                      type: CustomTextFieldType.other),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  CustomTextFormField(
-                      readOnly: false,
-                      label:
-                          SharedLocalizations.of(context)!.inputConfPassLabel,
-                      keyboardType: TextInputType.visiblePassword,
-                      prefixIconName: FontAwesomeIcons.lock,
-                      suffixIconName: FontAwesomeIcons.eyeSlash,
-                      hint: SharedLocalizations.of(context)!.inputShownPassHint,
+                      label: SharedLocalizations.of(context)!.inputEmailLabel,
+                      keyboardType: TextInputType.emailAddress,
+                      prefixIconName: FontAwesomeIcons.envelope,
+                      hint: SharedLocalizations.of(context)!.inputEmailHint,
                       type: CustomTextFieldType.other),
                   const Spacer(
                     flex: 1,

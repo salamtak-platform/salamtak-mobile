@@ -66,5 +66,12 @@
     "createNewPassButton": "إنشاء كلمة السر",
     "loginTitle": "تسجيل الدخول",
     "forgotPassButton": "هل نسيت كلمة السر؟",
-    "loginButton": "تسجيل الدخول"
+    "loginButton": "تسجيل الدخول",
+    "inputRequiredError": "هذا الحقل مطلوب",
+    "phoneLengthError": "رقم الهاتف يجب ألا يقل عن 10 أرقام",
+    "emailVaildFormatError": "هذا البريد الإلكتروني غير صحيح",
+    "passwordLengthError": "كلمة السر يجب ألا تقل عن 8 خانات",
+    "passwordsMatchingError": "كلمتي المرور يجب أن يكونا متطابقين",
+    "registerTokenExpiredError": "أنتهت مدة الجلسة، برجاء إعادة البدء من جديد.",
+    "otpValidationError": "الرمز السري غير صحيح"
 }

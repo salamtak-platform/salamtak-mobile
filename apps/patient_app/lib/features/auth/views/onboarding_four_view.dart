@@ -5,8 +5,8 @@ import 'package:patient_app/components/custom_onboarding_body.dart';
 import 'package:patient_app/components/onboarding_image_container.dart';
 import 'package:patient_app/components/view_indicator.dart';
 import 'package:patient_app/src/generated/patient_localizations.dart';
-import 'package:patient_app/views/continue_with_phone_view.dart';
-import 'package:patient_app/views/onboarding_three_view.dart';
+import 'package:patient_app/features/auth/views/continue_with_phone_view.dart';
+import 'package:patient_app/features/auth/views/onboarding_three_view.dart';
 
 class OnboardingFourView extends StatelessWidget {
   static String id = "OnboardingFourView";

@@ -4,29 +4,31 @@ import 'package:localization/localization.dart';
 import 'package:patient_app/app_colors.dart';
 import 'package:patient_app/components/custom_text_field.dart';
 import 'package:patient_app/components/custom_main_button.dart';
-import 'package:patient_app/views/email_otp_view.dart';
+import 'package:patient_app/features/auth/views/email_otp_view.dart';
 
-class ContinueWithEmailView extends StatelessWidget {
-  static String id = "ContinueWithEmailView";
+class AddPhoneView extends StatelessWidget {
+  static String id = "AddPhoneView";
 
-  const ContinueWithEmailView({super.key});
+  const AddPhoneView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.naturalWhite,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: AppColors.naturalWhite,
       ),
       body: SafeArea(
+          maintainBottomViewPadding: true,
           child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    SharedLocalizations.of(context)!.continueWithEmailTitle,
+                    SharedLocalizations.of(context)!.addPhoneTitle,
                     style: TextStyle(
                       fontFamily: "Baloo Bhaijaan 2",
                       fontSize: 24,
@@ -38,11 +40,11 @@ class ContinueWithEmailView extends StatelessWidget {
                   ),
                   CustomTextFormField(
                       readOnly: false,
-                      label: SharedLocalizations.of(context)!.inputEmailLabel,
-                      keyboardType: TextInputType.emailAddress,
-                      prefixIconName: FontAwesomeIcons.envelope,
-                      hint: SharedLocalizations.of(context)!.inputEmailHint,
-                      type: CustomTextFieldType.other),
+                      label: SharedLocalizations.of(context)!.inputPhoneLabel,
+                      keyboardType: TextInputType.phone,
+                      prefixIconName: FontAwesomeIcons.phoneFlip,
+                      hint: SharedLocalizations.of(context)!.inputPhoneHint,
+                      type: CustomTextFieldType.phone),
                   const Spacer(
                     flex: 1,
                   ),

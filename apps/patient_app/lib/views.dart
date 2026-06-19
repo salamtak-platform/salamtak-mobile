@@ -2,7 +2,7 @@
 // export 'package:patient_app/views/add_phone_view.dart';
 // export 'package:patient_app/views/complete_account.dart';
 // export 'package:patient_app/views/continue_with_email_view.dart';
-export 'package:patient_app/views/continue_with_phone_view.dart';
+// export 'package:patient_app/features/auth/views/continue_with_phone_view.dart';
 // export 'package:patient_app/views/create_password_view.dart';
 // export 'package:patient_app/views/test_date_screen.dart';
 // export 'package:patient_app/views/test_image_upload_screen.dart';

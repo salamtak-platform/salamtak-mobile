@@ -23,8 +23,42 @@ class ContinueWithPhoneView extends StatefulWidget {
 class _ContinueWithPhoneViewState extends State<ContinueWithPhoneView> {
   String? phoneNumber;
   String? countryCode;
+  bool showError = false;
+  String? errorMessage;
+  late FocusNode phoneFocusNode;
 
   GlobalKey<FormState> formKey = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+    phoneFocusNode = FocusNode();
+    phoneFocusNode.addListener(() {
+      if (!phoneFocusNode.hasFocus) {
+        final message = _validatePhone(phoneNumber);
+        setState(() {
+          showError = message != null;
+          errorMessage = message;
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    phoneFocusNode.dispose();
+    super.dispose();
+  }
+
+  String? _validatePhone(String? data) {
+    if (data == null || data.isEmpty) {
+      return "هذا الحقل مطلوب";
+    }
+    if (data.length != 10 && data.length != 11) {
+      return "رقم الهاتف يجب ألا يقل عن 10 أرقام";
+    }
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,21 +117,21 @@ class _ContinueWithPhoneViewState extends State<ContinueWithPhoneView> {
                     prefixIconName: FontAwesomeIcons.phoneFlip,
                     hint: SharedLocalizations.of(context)!.inputPhoneHint,
                     type: CustomTextFieldType.phone,
+                    showError: showError,
+                    errorMessage: errorMessage,
+                    focusNode: phoneFocusNode,
                     onChanged: (data) {
-                      if (data.startsWith("0")) {
-                        phoneNumber = data.substring(1);
-                      } else {
-                        phoneNumber = data;
-                      }
+                      setState(() {
+                        if (data.startsWith("0")) {
+                          phoneNumber = data.substring(1);
+                        } else {
+                          phoneNumber = data;
+                        }
+                        showError = false;
+                        errorMessage = null;
+                      });
                     },
-                    validator: (data) {
-                      if (data!.isEmpty) {
-                        return "هذا الحقل مطلوب";
-                      } else if (data.length != 10 && data.length != 11) {
-                        return "رقم الهاتف يجب ألا يقل عن 10 أرقام";
-                      }
-                      return null;
-                    },
+                    validator: _validatePhone,
                   ),
                   SizedBox(height: 32),
                   CustomMainButton(
@@ -107,13 +141,19 @@ class _ContinueWithPhoneViewState extends State<ContinueWithPhoneView> {
                       isLeftIcon: false,
                       isRightIcon: false,
                       onPressed: () {
+                        // final message = _validatePhone(phoneNumber);
+                        // setState(() {
+                        //   showError = message != null;
+                        //   errorMessage = message;
+                        // });
+
                         if (formKey.currentState!.validate()) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                                 content: Text(
                                     "continue with phone $phoneNumber Button pressed")),
                           );
-                        } else {}
+                        }
                       },
                       style: MainButtonStyles.primary),
                   SizedBox(height: 24),

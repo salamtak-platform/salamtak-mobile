@@ -4,12 +4,12 @@ import 'package:localization/localization.dart';
 import 'package:patient_app/app_colors.dart';
 import 'package:patient_app/components/custom_text_field.dart';
 import 'package:patient_app/components/custom_main_button.dart';
-import 'package:patient_app/views/email_otp_view.dart';
+import 'package:patient_app/features/auth/views/email_otp_view.dart';
 
-class AddPhoneView extends StatelessWidget {
-  static String id = "AddPhoneView";
+class CreatePasswordView extends StatelessWidget {
+  static String id = "AddEmail";
 
-  const AddPhoneView({super.key});
+  const CreatePasswordView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class AddPhoneView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    SharedLocalizations.of(context)!.addPhoneTitle,
+                    SharedLocalizations.of(context)!.createPassTitle,
                     style: TextStyle(
                       fontFamily: "Baloo Bhaijaan 2",
                       fontSize: 24,
@@ -40,11 +40,24 @@ class AddPhoneView extends StatelessWidget {
                   ),
                   CustomTextFormField(
                       readOnly: false,
-                      label: SharedLocalizations.of(context)!.inputPhoneLabel,
-                      keyboardType: TextInputType.phone,
-                      prefixIconName: FontAwesomeIcons.phoneFlip,
-                      hint: SharedLocalizations.of(context)!.inputPhoneHint,
-                      type: CustomTextFieldType.phone),
+                      label: SharedLocalizations.of(context)!.inputPassLabel,
+                      keyboardType: TextInputType.visiblePassword,
+                      prefixIconName: FontAwesomeIcons.lock,
+                      suffixIconName: FontAwesomeIcons.eyeSlash,
+                      hint: SharedLocalizations.of(context)!.inputShownPassHint,
+                      type: CustomTextFieldType.other),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  CustomTextFormField(
+                      readOnly: false,
+                      label:
+                          SharedLocalizations.of(context)!.inputConfPassLabel,
+                      keyboardType: TextInputType.visiblePassword,
+                      prefixIconName: FontAwesomeIcons.lock,
+                      suffixIconName: FontAwesomeIcons.eyeSlash,
+                      hint: SharedLocalizations.of(context)!.inputShownPassHint,
+                      type: CustomTextFieldType.other),
                   const Spacer(
                     flex: 1,
                   ),

@@ -5,11 +5,11 @@ import 'package:patient_app/components/custom_onboarding_body.dart';
 import 'package:patient_app/components/onboarding_image_container.dart';
 import 'package:patient_app/components/view_indicator.dart';
 import 'package:patient_app/src/generated/patient_localizations.dart';
-import 'package:patient_app/views/onboarding_two_view.dart';
+import 'package:patient_app/features/auth/views/onboarding_four_view.dart';
 
-class OnboardingOneView extends StatelessWidget {
-  static String id = "OnboardingOneView";
-  const OnboardingOneView({super.key});
+class OnboardingThreeView extends StatelessWidget {
+  static String id = "OnboardingThreeView";
+  const OnboardingThreeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,20 +32,25 @@ class OnboardingOneView extends StatelessWidget {
         child: Column(
           children: [
             OnboardingImageContainer(
-              imagePath: "assets/images/patient_onboarding_1.png",
+              imagePath: "assets/images/patient_onboarding_3.png",
               // imageWidth: 343,
               // imageHeight: 212,
             ),
             SizedBox(height: 32),
-            ViewIndicator(selectedView: [true, false, false, false]),
+            ViewIndicator(selectedView: [false, false, true, false]),
             SizedBox(height: 32),
             CustomOnboardingBody(
-              title: PatientLocalizations.of(context)!.onboardingOneTitle,
-              description: PatientLocalizations.of(context)!.onboardingOneBody,
-              buttonsCount: 1,
+              title: PatientLocalizations.of(context)!.onboardingThreeTitle,
+              description:
+                  PatientLocalizations.of(context)!.onboardingThreeBody,
+              buttonsCount: 2,
               mainButtonTitle: SharedLocalizations.of(context)!.onboardingNext,
+              secondaryButtonTitle:
+                  SharedLocalizations.of(context)!.onboardingPrev,
               mainButtonStatus: "secondary",
-              mainRoute: OnboardingTwoView.id,
+              secondaryButtonStatus: "secondary strocked",
+              mainRoute: OnboardingFourView.id,
+              secondaryRoute: OnboardingThreeView.id,
             ),
           ],
         ),

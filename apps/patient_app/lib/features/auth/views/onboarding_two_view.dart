@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:localization/localization.dart';
 import 'package:patient_app/app_colors.dart';
 import 'package:patient_app/components/custom_onboarding_body.dart';
 import 'package:patient_app/components/onboarding_image_container.dart';
 import 'package:patient_app/components/view_indicator.dart';
 import 'package:patient_app/src/generated/patient_localizations.dart';
-import 'package:patient_app/views/onboarding_four_view.dart';
+import 'package:patient_app/src/generated/patient_localizations_ar.dart';
+import 'package:patient_app/features/auth/views/onboarding_one_view.dart';
+import 'package:patient_app/features/auth/views/onboarding_three_view.dart';
+import 'package:localization/localization.dart';
 
-class OnboardingThreeView extends StatelessWidget {
-  static String id = "OnboardingThreeView";
-  const OnboardingThreeView({super.key});
+class OnboardingTwoView extends StatelessWidget {
+  static String id = "OnboardingTwoView";
+  const OnboardingTwoView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,25 +34,24 @@ class OnboardingThreeView extends StatelessWidget {
         child: Column(
           children: [
             OnboardingImageContainer(
-              imagePath: "assets/images/patient_onboarding_3.png",
+              imagePath: "assets/images/patient_onboarding_2.png",
               // imageWidth: 343,
               // imageHeight: 212,
             ),
             SizedBox(height: 32),
-            ViewIndicator(selectedView: [false, false, true, false]),
+            ViewIndicator(selectedView: [false, true, false, false]),
             SizedBox(height: 32),
             CustomOnboardingBody(
-              title: PatientLocalizations.of(context)!.onboardingThreeTitle,
-              description:
-                  PatientLocalizations.of(context)!.onboardingThreeBody,
+              title: PatientLocalizations.of(context)!.onboardingTwoTitle,
+              description: PatientLocalizations.of(context)!.onboardingTwoBody,
               buttonsCount: 2,
               mainButtonTitle: SharedLocalizations.of(context)!.onboardingNext,
               secondaryButtonTitle:
                   SharedLocalizations.of(context)!.onboardingPrev,
               mainButtonStatus: "secondary",
               secondaryButtonStatus: "secondary strocked",
-              mainRoute: OnboardingFourView.id,
-              secondaryRoute: OnboardingThreeView.id,
+              mainRoute: OnboardingThreeView.id,
+              secondaryRoute: OnboardingOneView.id,
             ),
           ],
         ),

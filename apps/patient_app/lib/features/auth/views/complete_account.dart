@@ -5,7 +5,7 @@ import 'package:patient_app/app_colors.dart';
 import 'package:patient_app/components/custom_text_field.dart';
 import 'package:patient_app/components/gender_selector.dart';
 import 'package:patient_app/components/custom_main_button.dart';
-import 'package:patient_app/views/home_view.dart';
+import 'package:patient_app/features/auth/views/home_view.dart';
 
 class CompleteAccount extends StatelessWidget {
   static String id = "CompleteAccount";

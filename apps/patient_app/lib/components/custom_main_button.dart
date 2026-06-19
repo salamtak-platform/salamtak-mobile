@@ -189,7 +189,6 @@ class CustomMainButton extends StatelessWidget {
   }
 }
 
-
 // ## عايز اللودينج يخلي الستايل disabled
 
 // ده ممكن يحصل بطريقتين:

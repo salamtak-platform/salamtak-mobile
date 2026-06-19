@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:patient_app/app_colors.dart';
+import 'package:patient_app/text_styles.dart';
 
 enum CustomTextFieldType { phone, other }
 
-class CustomTextFormField extends StatelessWidget {
+class CustomTextFormField extends StatefulWidget {
   final String label;
   final FaIconData prefixIconName;
   final String hint;
@@ -13,9 +14,12 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final CustomTextFieldType type;
   final bool readOnly;
+  final FocusNode? focusNode;
   final FormFieldValidator<String> validator;
   final Function(String) onChanged;
   final List<TextInputFormatter>? inputFormatters;
+  final bool showError;
+  final String? errorMessage;
 
   const CustomTextFormField({
     super.key,
@@ -26,11 +30,19 @@ class CustomTextFormField extends StatelessWidget {
     required this.hint,
     required this.type,
     required this.readOnly,
+    this.focusNode,
     required this.onChanged,
     required this.validator,
     this.inputFormatters,
+    this.showError = false,
+    this.errorMessage,
   });
 
+  @override
+  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
+}
+
+class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -38,93 +50,86 @@ class CustomTextFormField extends StatelessWidget {
       spacing: 8,
       children: [
         Text(
-          label,
-          style: TextStyle(
-            package: 'ui_kit',
-            fontFamily: "Baloo Bhaijaan 2",
-            fontSize: 16,
-            fontWeight: FontWeight(500),
-          ),
+          widget.label,
+          style: AppTextStyles().bodyMed,
         ),
         Row(
           spacing: 8,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-                child: Theme(
-                    data: Theme.of(context).copyWith(
-                      textSelectionTheme: TextSelectionThemeData(
-                        selectionColor: AppColors.patientPrimaryLight4,
-                        selectionHandleColor: AppColors.patientPrimary,
-                        cursorColor: AppColors.patientPrimary,
-                      ),
-                    ),
-                    child: TextFormField(
-                      inputFormatters: inputFormatters,
-                      validator: validator,
-                      style: TextStyle(
-                        fontFamily: "Baloo Bhaijaan 2",
-                        fontSize: 16,
-                        fontWeight: FontWeight(500),
-                        color: AppColors.naturalBlack,
-                      ),
-                      onChanged: onChanged,
-                      keyboardType: keyboardType,
-                      readOnly: readOnly,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsetsDirectional.symmetric(
-                              vertical: 0, horizontal: 0),
-                          prefixIcon: Padding(
-                            padding: const EdgeInsetsDirectional.only(
-                              start: 16,
-                              end: 14,
-                            ),
+                child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextFormField(
+                  focusNode: widget.focusNode,
+                  autovalidateMode: AutovalidateMode.disabled,
+                  inputFormatters: widget.inputFormatters,
+                  validator: widget.validator,
+                  style: TextStyle(
+                    fontFamily: "Baloo Bhaijaan 2",
+                    fontSize: 16,
+                    fontWeight: FontWeight(500),
+                    color: AppColors.naturalBlack,
+                  ),
+                  onChanged: widget.onChanged,
+                  keyboardType: widget.keyboardType,
+                  readOnly: widget.readOnly,
+                  decoration: InputDecoration(
+                    suffixIcon: widget.suffixIconName != null
+                        ? Padding(
+                            padding: const EdgeInsetsDirectional.only(end: 16),
                             child: FaIcon(
-                              prefixIconName,
+                              widget.suffixIconName,
                               size: 20,
                             ),
-                          ),
-                          suffixIcon: suffixIconName != null
-                              ? Padding(
-                                  padding:
-                                      const EdgeInsetsDirectional.only(end: 16),
-                                  child: FaIcon(
-                                    suffixIconName,
-                                    size: 20,
-                                  ),
-                                )
-                              : null,
-                          prefixIconColor: AppColors.naturalLightGray,
-                          prefixIconConstraints:
-                              const BoxConstraints(minWidth: 24, minHeight: 24),
-                          suffixIconColor: AppColors.naturalLightGray,
-                          suffixIconConstraints:
-                              const BoxConstraints(minWidth: 24, minHeight: 24),
-                          hint: Text(
-                            hint,
+                          )
+                        : null,
+                    contentPadding: EdgeInsetsDirectional.symmetric(
+                        vertical: 0, horizontal: 0),
+                    prefixIcon: Padding(
+                      padding: const EdgeInsetsDirectional.only(
+                        start: 16,
+                        end: 14,
+                      ),
+                      child: FaIcon(
+                        widget.prefixIconName,
+                        size: 20,
+                      ),
+                    ),
+                    hint: Text(
+                      widget.hint,
+                    ),
+                  ),
+                ),
+                if (widget.showError && widget.errorMessage != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8),
+                    child: Row(
+                      children: [
+                        FaIcon(
+                          FontAwesomeIcons.circleExclamation,
+                          color: AppColors.alertError,
+                          size: 16,
+                        ),
+                        SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            widget.errorMessage!,
                             style: TextStyle(
                               fontFamily: "Baloo Bhaijaan 2",
-                              fontSize: 14,
+                              fontSize: 12,
                               fontWeight: FontWeight(500),
-                              color: AppColors.naturalDarkGrey,
+                              color: AppColors.alertError,
                             ),
                           ),
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide(
-                              color: AppColors.naturalLightGray,
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide(
-                              width: 2,
-                              color: AppColors.patientPrimary,
-                            ),
-                          )),
-                    ))),
-            type == CustomTextFieldType.phone
+                        ),
+                      ],
+                    ),
+                  ),
+              ],
+            )),
+            widget.type == CustomTextFieldType.phone
                 ? Container(
                     height: 48,
                     padding: const EdgeInsets.symmetric(horizontal: 16),
