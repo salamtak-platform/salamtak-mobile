@@ -27,9 +27,14 @@ migrate_working_dir/
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
-/build/
-/coverage/
+**/build/
+**/coverage/
+**/android/.kotlin/
+**/android/local.properties
 *.g.dart
+.env
+.env.*
+!.env.example
 
 # Symbolication related
 app.*.symbols

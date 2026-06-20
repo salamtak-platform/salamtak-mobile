@@ -1,4 +1,6 @@
 import 'dart:io';
+
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
@@ -50,8 +52,7 @@ class _TestImageUploadScreenState extends State<TestImageUploadScreen> {
         });
 
         // 4. إرسال طلب الـ POST عبر Dio
-        // استبدل الرابط أدناه برابط الـ API الفعلي الخاص بك
-        String apiUrl = "https://your-api-endpoint.com/api/upload";
+        final apiUrl = '${AppConfig.apiBaseUrl}/upload';
 
         Response response = await _dio.post(
           apiUrl,
@@ -59,14 +60,14 @@ class _TestImageUploadScreenState extends State<TestImageUploadScreen> {
           // اختياري: لمتابعة النسبة المئوية لتقدم عملية الرفع في الـ Console
           onSendProgress: (int sent, int total) {
             double progress = (sent / total) * 100;
-            print("نسبة الرفع: ${progress.toStringAsFixed(0)}%");
+            debugPrint("نسبة الرفع: ${progress.toStringAsFixed(0)}%");
           },
         );
 
         // 5. التعامل مع استجابة السيرفر
         if (response.statusCode == 200 || response.statusCode == 201) {
           _showSnackBar("تم رفع الصورة بنجاح!", Colors.green);
-          print("استجابة السيرفر: ${response.data}");
+          debugPrint("استجابة السيرفر: ${response.data}");
         } else {
           _showSnackBar(
               "فشل الرفع: رمز الحالة ${response.statusCode}", Colors.red);
@@ -78,7 +79,7 @@ class _TestImageUploadScreenState extends State<TestImageUploadScreen> {
           errorMessage = "خطأ من السيرفر: ${e.response?.data}";
         }
         _showSnackBar(errorMessage, Colors.red);
-        print("Dio Error: ${e.message}");
+        debugPrint("Dio Error: ${e.message}");
       } catch (e) {
         // التعامل مع أي أخطاء عامة أخرى
         _showSnackBar("حدث خطأ غير متوقع: $e", Colors.red);

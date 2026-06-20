@@ -63,7 +63,7 @@ import 'shared_localizations_en.dart';
 /// property.
 abstract class SharedLocalizations {
   SharedLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -86,16 +86,16 @@ abstract class SharedLocalizations {
   /// of delegates is preferred or required.
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
       <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('ar'),
-    Locale('en'),
+    Locale('en')
   ];
 
   /// No description provided for @prefTitle.
@@ -508,8 +508,7 @@ class _SharedLocalizationsDelegate
   @override
   Future<SharedLocalizations> load(Locale locale) {
     return SynchronousFuture<SharedLocalizations>(
-      lookupSharedLocalizations(locale),
-    );
+        lookupSharedLocalizations(locale));
   }
 
   @override
@@ -530,9 +529,8 @@ SharedLocalizations lookupSharedLocalizations(Locale locale) {
   }
 
   throw FlutterError(
-    'SharedLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-    'an issue with the localizations generation tool. Please file an issue '
-    'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.',
-  );
+      'SharedLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
 }

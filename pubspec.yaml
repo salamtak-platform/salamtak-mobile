@@ -1,12 +1,17 @@
-name: salamtak
+name: salamtak_workspace
+description: Workspace configuration for the Salamtak Flutter monorepo.
 publish_to: none
 
 environment:
   sdk: '>=3.5.0 <4.0.0'
 
 workspace:
-- apps/patient_app
-- apps/provider_app
-- packages/core
-- packages/ui_kit
-- packages/data
+  - apps/patient_app
+  - apps/provider_app
+  - packages/core
+  - packages/data
+  - packages/localization
+  - packages/ui_kit
+
+dev_dependencies:
+  flutter_lints: ^6.0.0

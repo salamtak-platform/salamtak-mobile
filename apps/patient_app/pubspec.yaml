@@ -43,15 +43,15 @@ dependencies:
   pinput: ^6.0.2
   dio: ^5.9.2
   http: ^1.6.0
-  
+
   core:
-    path: C:/Users/mokht/Music/salamtak/packages/core
+    path: ../../packages/core
   ui_kit:
-    path: C:/Users/mokht/Music/salamtak/packages/ui_kit
+    path: ../../packages/ui_kit
   data:
-    path: C:/Users/mokht/Music/salamtak/packages/data
+    path: ../../packages/data
   localization:
-    path: C:/Users/mokht/Music/salamtak/packages/localization
+    path: ../../packages/localization
   intl: ^0.20.2
 
 
