@@ -4,7 +4,6 @@ import 'package:localization/localization.dart';
 import 'package:patient_app/app_colors.dart';
 import 'package:patient_app/components/custom_text_field.dart';
 import 'package:patient_app/components/custom_main_button.dart';
-import 'package:patient_app/features/auth/views/email_otp_view.dart';
 
 class ContinueWithEmailView extends StatelessWidget {
   static String id = "ContinueWithEmailView";
@@ -37,12 +36,15 @@ class ContinueWithEmailView extends StatelessWidget {
                     height: 24,
                   ),
                   CustomTextFormField(
-                      readOnly: false,
-                      label: SharedLocalizations.of(context)!.inputEmailLabel,
-                      keyboardType: TextInputType.emailAddress,
-                      prefixIconName: FontAwesomeIcons.envelope,
-                      hint: SharedLocalizations.of(context)!.inputEmailHint,
-                      type: CustomTextFieldType.other),
+                    readOnly: false,
+                    label: SharedLocalizations.of(context)!.inputEmailLabel,
+                    keyboardType: TextInputType.emailAddress,
+                    prefixIconName: FontAwesomeIcons.envelope,
+                    hint: SharedLocalizations.of(context)!.inputEmailHint,
+                    type: CustomTextFieldType.other,
+                    onChanged: (String p1) {},
+                    validator: (String? value) {},
+                  ),
                   const Spacer(
                     flex: 1,
                   ),
@@ -52,10 +54,11 @@ class ContinueWithEmailView extends StatelessWidget {
                     ),
                     child: CustomMainButton(
                       title: SharedLocalizations.of(context)!.onboardingNext,
-                      status: "primary",
                       isLeftIcon: false,
                       isRightIcon: false,
-                      route: EmailOtpView.id,
+                      state: MainButtonStates.enabled,
+                      onPressed: () {},
+                      style: MainButtonStyles.primary,
                     ),
                   ),
                 ],

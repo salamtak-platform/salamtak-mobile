@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:patient_app/app_colors.dart';
-import 'package:patient_app/src/generated/patient_localizations.dart';
 
 class HomeView extends StatelessWidget {
   static String id = "HomeView";

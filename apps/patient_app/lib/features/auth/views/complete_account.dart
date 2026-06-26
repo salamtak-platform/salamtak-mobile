@@ -94,25 +94,31 @@ class CompleteAccount extends StatelessWidget {
                         children: [
                           Expanded(
                             child: CustomTextFormField(
-                                readOnly: false,
-                                label: SharedLocalizations.of(context)!
-                                    .inputFirstNameLabel,
-                                keyboardType: TextInputType.phone,
-                                prefixIconName: FontAwesomeIcons.phoneFlip,
-                                hint: SharedLocalizations.of(context)!
-                                    .inputFirstNameHint,
-                                type: CustomTextFieldType.other),
+                              readOnly: false,
+                              label: SharedLocalizations.of(context)!
+                                  .inputFirstNameLabel,
+                              keyboardType: TextInputType.phone,
+                              prefixIconName: FontAwesomeIcons.phoneFlip,
+                              hint: SharedLocalizations.of(context)!
+                                  .inputFirstNameHint,
+                              type: CustomTextFieldType.other,
+                              onChanged: (String p1) {},
+                              validator: (String? value) {},
+                            ),
                           ),
                           Expanded(
                             child: CustomTextFormField(
-                                readOnly: false,
-                                label: SharedLocalizations.of(context)!
-                                    .inputLastNameLabel,
-                                keyboardType: TextInputType.phone,
-                                prefixIconName: FontAwesomeIcons.phoneFlip,
-                                hint: SharedLocalizations.of(context)!
-                                    .inputLastNameHint,
-                                type: CustomTextFieldType.other),
+                              readOnly: false,
+                              label: SharedLocalizations.of(context)!
+                                  .inputLastNameLabel,
+                              keyboardType: TextInputType.phone,
+                              prefixIconName: FontAwesomeIcons.phoneFlip,
+                              hint: SharedLocalizations.of(context)!
+                                  .inputLastNameHint,
+                              type: CustomTextFieldType.other,
+                              onChanged: (String p1) {},
+                              validator: (String? value) {},
+                            ),
                           ),
                         ],
                       ),
@@ -120,37 +126,43 @@ class CompleteAccount extends StatelessWidget {
                         height: 24,
                       ),
                       CustomTextFormField(
-                          readOnly: false,
-                          label:
-                              SharedLocalizations.of(context)!.inputPhoneLabel,
-                          keyboardType: TextInputType.phone,
-                          prefixIconName: FontAwesomeIcons.phoneFlip,
-                          hint: SharedLocalizations.of(context)!.inputPhoneHint,
-                          type: CustomTextFieldType.phone),
+                        readOnly: false,
+                        label: SharedLocalizations.of(context)!.inputPhoneLabel,
+                        keyboardType: TextInputType.phone,
+                        prefixIconName: FontAwesomeIcons.phoneFlip,
+                        hint: SharedLocalizations.of(context)!.inputPhoneHint,
+                        type: CustomTextFieldType.phone,
+                        onChanged: (String p1) {},
+                        validator: (String? value) {},
+                      ),
                       const SizedBox(
                         height: 24,
                       ),
                       CustomTextFormField(
-                          readOnly: false,
-                          label:
-                              SharedLocalizations.of(context)!.inputEmailLabel,
-                          keyboardType: TextInputType.emailAddress,
-                          prefixIconName: FontAwesomeIcons.envelope,
-                          hint: SharedLocalizations.of(context)!.inputEmailHint,
-                          type: CustomTextFieldType.other),
+                        readOnly: false,
+                        label: SharedLocalizations.of(context)!.inputEmailLabel,
+                        keyboardType: TextInputType.emailAddress,
+                        prefixIconName: FontAwesomeIcons.envelope,
+                        hint: SharedLocalizations.of(context)!.inputEmailHint,
+                        type: CustomTextFieldType.other,
+                        onChanged: (String p1) {},
+                        validator: (String? value) {},
+                      ),
                       const SizedBox(
                         height: 24,
                       ),
                       CustomTextFormField(
-                          readOnly: false,
-                          label:
-                              SharedLocalizations.of(context)!.inputPassLabel,
-                          keyboardType: TextInputType.visiblePassword,
-                          prefixIconName: FontAwesomeIcons.lock,
-                          suffixIconName: FontAwesomeIcons.eyeSlash,
-                          hint: SharedLocalizations.of(context)!
-                              .inputShownPassHint,
-                          type: CustomTextFieldType.other),
+                        readOnly: false,
+                        label: SharedLocalizations.of(context)!.inputPassLabel,
+                        keyboardType: TextInputType.visiblePassword,
+                        prefixIconName: FontAwesomeIcons.lock,
+                        suffixIconName: FontAwesomeIcons.eyeSlash,
+                        hint:
+                            SharedLocalizations.of(context)!.inputShownPassHint,
+                        type: CustomTextFieldType.other,
+                        onChanged: (String p1) {},
+                        validator: (String? value) {},
+                      ),
                       const SizedBox(
                         height: 24,
                       ),
@@ -159,14 +171,17 @@ class CompleteAccount extends StatelessWidget {
                         height: 24,
                       ),
                       CustomTextFormField(
-                          readOnly: true,
-                          label: SharedLocalizations.of(context)!
-                              .inputBirthdateLabel,
-                          keyboardType: null,
-                          prefixIconName: FontAwesomeIcons.calendar,
-                          hint: SharedLocalizations.of(context)!
-                              .inputBirthdateHint,
-                          type: CustomTextFieldType.other),
+                        readOnly: true,
+                        label: SharedLocalizations.of(context)!
+                            .inputBirthdateLabel,
+                        keyboardType: null,
+                        prefixIconName: FontAwesomeIcons.calendarDays,
+                        hint:
+                            SharedLocalizations.of(context)!.inputBirthdateHint,
+                        type: CustomTextFieldType.other,
+                        onChanged: (String p1) {},
+                        validator: (String? value) {},
+                      ),
                       SizedBox(
                         height: 24,
                       ),
@@ -176,10 +191,13 @@ class CompleteAccount extends StatelessWidget {
               ),
               CustomMainButton(
                 title: SharedLocalizations.of(context)!.createAccButton,
-                status: "primary",
+                style: MainButtonStyles.primary,
+                state: MainButtonStates.enabled,
                 isLeftIcon: false,
                 isRightIcon: false,
-                route: HomeView.id,
+                onPressed: () {
+                  Navigator.pushNamed(context, HomeView.id);
+                },
               ),
             ],
           ),

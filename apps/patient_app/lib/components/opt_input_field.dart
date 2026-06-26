@@ -3,6 +3,9 @@ import 'package:patient_app/app_colors.dart';
 import 'package:pinput/pinput.dart';
 
 class OtpInputField extends StatelessWidget {
+  final Function(String)? onSubmitted;
+  final ValueChanged<String>? onChanged;
+  final ValueChanged<String>? onCompleted;
   static final defaultPinTheme = PinTheme(
     width: 60,
     height: 64,
@@ -10,7 +13,7 @@ class OtpInputField extends StatelessWidget {
         fontFamily: "Baloo Bhaijaan 2",
         fontSize: 48,
         fontWeight: FontWeight(500),
-        color: AppColors.patientPrimary),
+        color: const Color.fromARGB(255, 86, 89, 89)),
     decoration: BoxDecoration(
       color: AppColors.naturalWhite,
       border: Border.all(
@@ -30,17 +33,22 @@ class OtpInputField extends StatelessWidget {
       ));
   const OtpInputField({
     super.key,
+    this.onSubmitted,
+    this.onChanged,
+    this.onCompleted,
   });
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Pinput(
-        length: 4,
+        length: 6,
         keyboardType: TextInputType.number,
         defaultPinTheme: defaultPinTheme,
         focusedPinTheme: focusedPinTheme,
         submittedPinTheme: submittedPinTheme,
+        onChanged: onChanged,
+        onCompleted: onCompleted,
       ),
     );
   }

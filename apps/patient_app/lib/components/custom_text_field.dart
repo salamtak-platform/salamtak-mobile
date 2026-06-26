@@ -135,7 +135,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      border: BoxBorder.all(color: AppColors.naturalDarkGrey),
+                      border: Border.all(color: AppColors.naturalDarkGrey),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
