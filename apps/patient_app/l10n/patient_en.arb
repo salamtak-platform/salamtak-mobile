@@ -55,7 +55,7 @@
     "completeAccTitle": "إكمال بيانات الحساب",
     "createAccButton": "إنشاء حساب جديد",
     "verifyPhoneTitle": "التحقق من رقم المحمول",
-    "verifyPhoneBody": "قم بإدخال الرمز المكون من 4 أرقام الذي تم إرساله إلى الرقم: {phoneNumber}",
+    "verifyPhoneBody": "قم بإدخال الرمز المكون من 6 أرقام الذي تم إرساله إلى الرقم: {phoneNumber}",
     "verifyEmailTitle": "التحقق من البريد الإلكتروني",
     "verifyEmailBody": "قم بإدخال الرمز المكون من 4 أرقام الذي تم إرساله إلى البريد الإلكتروني: {email}",
     "resendOtpText": "لم تستلم الرمز؟ يمكنك إعادة إرساله خلال: {seconds} ثانية",

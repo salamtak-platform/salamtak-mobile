@@ -34,6 +34,10 @@ class EmailSearchSuccessState extends AuthState {
   EmailSearchSuccessState(this.message);
 }
 
+class EmailSearchFoundState extends AuthState {}
+
+class EmailSearchNotFoundState extends AuthState {}
+
 class EmailSearchFailureState extends AuthState {
   final String error;
   EmailSearchFailureState(this.error);
@@ -107,4 +111,69 @@ class VerifyPhoneLoginSuccessState extends AuthState {
 class VerifyPhoneLoginFailureState extends AuthState {
   final String error;
   VerifyPhoneLoginFailureState(this.error);
+}
+
+// -------------------------------------------
+
+class ResendOtpLoadingState extends AuthState {}
+
+class ResendOtpSuccessState extends AuthState {
+  final String message;
+  ResendOtpSuccessState(this.message);
+}
+
+class ResendOtpFailureState extends AuthState {
+  final String error;
+  ResendOtpFailureState(this.error);
+}
+
+// -------------------------------------------
+
+class EmailLoginInitialState extends AuthState {}
+
+class EmailLoginLoadingState extends AuthState {}
+
+class EmailLoginSuccessState extends AuthState {
+  final String accessToken;
+  final String refreshToken;
+
+  EmailLoginSuccessState(
+      {required this.accessToken, required this.refreshToken});
+}
+
+class EmailLoginFailureState extends AuthState {
+  final String error;
+  EmailLoginFailureState(this.error);
+}
+
+// -------------------------------------------
+
+class ForgetPasswordInitialState extends AuthState {}
+
+class ForgetPasswordLoadingState extends AuthState {}
+
+class ForgetPasswordSuccessState extends AuthState {
+  final String message;
+  ForgetPasswordSuccessState(this.message);
+}
+
+class ForgetPasswordFailureState extends AuthState {
+  final String error;
+  ForgetPasswordFailureState(this.error);
+}
+
+// -------------------------------------------
+
+class ResetPasswordInitialState extends AuthState {}
+
+class ResetPasswordLoadingState extends AuthState {}
+
+class ResetPasswordSuccessState extends AuthState {
+  final String message;
+  ResetPasswordSuccessState(this.message);
+}
+
+class ResetPasswordFailureState extends AuthState {
+  final String error;
+  ResetPasswordFailureState(this.error);
 }

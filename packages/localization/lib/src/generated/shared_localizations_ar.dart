@@ -221,4 +221,26 @@ class SharedLocalizationsAr extends SharedLocalizations {
 
   @override
   String get loginButton => 'تسجيل الدخول';
+
+  @override
+  String get inputRequiredError => 'هذا الحقل مطلوب';
+
+  @override
+  String get phoneLengthError => 'رقم الهاتف يجب ألا يقل عن 10 أرقام';
+
+  @override
+  String get emailVaildFormatError => 'هذا البريد الإلكتروني غير صحيح';
+
+  @override
+  String get passwordLengthError => 'كلمة السر يجب ألا تقل عن 8 خانات';
+
+  @override
+  String get passwordsMatchingError => 'كلمتي المرور يجب أن يكونا متطابقين';
+
+  @override
+  String get registerTokenExpiredError =>
+      'أنتهت مدة الجلسة، برجاء إعادة البدء من جديد.';
+
+  @override
+  String get otpValidationError => 'الرمز السري غير صحيح';
 }

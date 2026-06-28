@@ -182,7 +182,7 @@ class PatientLocalizationsAr extends PatientLocalizations {
 
   @override
   String verifyPhoneBody(Object phoneNumber) {
-    return 'قم بإدخال الرمز المكون من 4 أرقام الذي تم إرساله إلى الرقم: $phoneNumber';
+    return 'قم بإدخال الرمز المكون من 6 أرقام الذي تم إرساله إلى الرقم: $phoneNumber';
   }
 
   @override

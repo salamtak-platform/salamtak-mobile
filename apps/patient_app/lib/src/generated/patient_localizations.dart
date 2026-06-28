@@ -432,7 +432,7 @@ abstract class PatientLocalizations {
   /// No description provided for @verifyPhoneBody.
   ///
   /// In en, this message translates to:
-  /// **'قم بإدخال الرمز المكون من 4 أرقام الذي تم إرساله إلى الرقم: {phoneNumber}'**
+  /// **'قم بإدخال الرمز المكون من 6 أرقام الذي تم إرساله إلى الرقم: {phoneNumber}'**
   String verifyPhoneBody(Object phoneNumber);
 
   /// No description provided for @verifyEmailTitle.

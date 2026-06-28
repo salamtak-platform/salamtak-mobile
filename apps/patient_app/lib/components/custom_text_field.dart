@@ -17,6 +17,10 @@ class CustomTextFormField extends StatefulWidget {
   final FocusNode? focusNode;
   final FormFieldValidator<String> validator;
   final Function(String) onChanged;
+  final TextEditingController? controller;
+  final bool obscureText;
+  final VoidCallback? onTap;
+  final bool? enabled;
   final List<TextInputFormatter>? inputFormatters;
   final bool showError;
   final String? errorMessage;
@@ -33,6 +37,10 @@ class CustomTextFormField extends StatefulWidget {
     this.focusNode,
     required this.onChanged,
     required this.validator,
+    this.controller,
+    this.obscureText = false,
+    this.onTap,
+    this.enabled,
     this.inputFormatters,
     this.showError = false,
     this.errorMessage,
@@ -62,6 +70,10 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextFormField(
+                  controller: widget.controller,
+                  obscureText: widget.obscureText,
+                  onTap: widget.onTap,
+                  enabled: widget.enabled,
                   focusNode: widget.focusNode,
                   autovalidateMode: AutovalidateMode.disabled,
                   inputFormatters: widget.inputFormatters,
@@ -69,7 +81,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                   style: TextStyle(
                     fontFamily: "Baloo Bhaijaan 2",
                     fontSize: 16,
-                    fontWeight: FontWeight(500),
+                    fontWeight: FontWeight.w500,
                     color: AppColors.naturalBlack,
                   ),
                   onChanged: widget.onChanged,
@@ -119,7 +131,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                             style: TextStyle(
                               fontFamily: "Baloo Bhaijaan 2",
                               fontSize: 12,
-                              fontWeight: FontWeight(500),
+                              fontWeight: FontWeight.w500,
                               color: AppColors.alertError,
                             ),
                           ),
@@ -143,7 +155,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                       children: [
                         FaIcon(
                           FontAwesomeIcons.chevronDown,
-                          weight: 24,
+                          size: 16,
                           color: AppColors.naturalDarkGrey,
                         ),
                         Text(
@@ -152,7 +164,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                             package: 'ui_kit',
                             fontFamily: "Baloo Bhaijaan 2",
                             fontSize: 16,
-                            fontWeight: FontWeight(500),
+                            fontWeight: FontWeight.w500,
                             color: AppColors.naturalDarkGrey,
                           ),
                         ),

@@ -6,13 +6,22 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:localization/localization.dart';
 import 'package:patient_app/app_colors.dart';
 import 'package:patient_app/features/auth/cubit/auth_cubit.dart';
-import 'package:patient_app/features/auth/views/continue_with_phone_view.dart';
-import 'package:patient_app/features/auth/views/mobile_otp_view.dart';
+import 'package:patient_app/views.dart';
 import 'package:patient_app/src/generated/patient_localizations.dart';
 
 void main() {
-  runApp(DevicePreview(
-      enabled: !kReleaseMode, builder: (context) => PatientApp()));
+  runApp(
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) {
+        final TextDirection textDirection = TextDirection.rtl;
+        return Directionality(
+          textDirection: textDirection,
+          child: const PatientApp(),
+        );
+      },
+    ),
+  );
 }
 
 class PatientApp extends StatelessWidget {
@@ -25,6 +34,8 @@ class PatientApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         locale: Locale('ar'),
+
+        // useInheritedMediaQuery is now handled by DevicePreview
         theme: ThemeData(
           fontFamily: "Baloo Bhaijaan 2",
           scaffoldBackgroundColor: AppColors.naturalWhite,
@@ -93,9 +104,9 @@ class PatientApp extends StatelessWidget {
         ),
 
         builder: DevicePreview.appBuilder,
+        // locale: DevicePreview.locale(context),
         // theme: ThemeData.light(),
         // darkTheme: ThemeData.dark(),
-
         localizationsDelegates: [
           SharedLocalizations.delegate,
           PatientLocalizations.delegate,
@@ -108,28 +119,36 @@ class PatientApp extends StatelessWidget {
           ...PatientLocalizations.supportedLocales,
         ],
         routes: {
-          //   SplashView.id: (context) => SplashView(),
+          MainView.id: (context) => MainView(),
+          SplashView.id: (context) => SplashView(),
           ContinueWithPhoneView.id: (context) => ContinueWithPhoneView(),
           MobileOtpView.id: (context) => MobileOtpView(),
-          //   EmailOtpView.id: (context) => EmailOtpView(),
-          // HomeView.id: (context) => HomeView(),
-          //   OnboardingOneView.id: (context) => OnboardingOneView(),
-          //   OnboardingTwoView.id: (context) => OnboardingTwoView(),
-          //   OnboardingThreeView.id: (context) => OnboardingThreeView(),
-          //   OnboardingFourView.id: (context) => OnboardingFourView(),
-          //   PreferencesView.id: (context) => PreferencesView(),
+          EmailOtpView.id: (context) => EmailOtpView(),
+          HomeView.id: (context) => HomeView(),
+          OnboardingOneView.id: (context) => OnboardingOneView(),
+          OnboardingTwoView.id: (context) => OnboardingTwoView(),
+          OnboardingThreeView.id: (context) => OnboardingThreeView(),
+          OnboardingFourView.id: (context) => OnboardingFourView(),
+          // PreferencesView.id: (context) => PreferencesView(),
+          CreatePasswordView.id: (context) => CreatePasswordView(),
+          ContinueWithEmailView.id: (context) => ContinueWithEmailView(),
+          LoginWithEmail.id: (context) => LoginWithEmail(),
+          // ResetPasswordView.id: (context) => ResetPasswordView(),
+          CompleteAccount.id: (context) => CompleteAccount(),
+          DoctorDetailsView.id: (context) => const DoctorDetailsView(),
+          // TestImageUploadScreen.id: (context) => TestImageUploadScreen(),
+          // TestDateScreen.id: (context) => TestDateScreen(),
+          SpecialtiesView.id: (context) => SpecialtiesView(),
+          // DoctorsListScreen.id: (context) => DoctorsListScreen(),
           // AddEmailView.id: (context) => AddEmailView(),
-          //   AddPhoneView.id: (context) => AddPhoneView(),
-          //   CreatePasswordView.id: (context) => CreatePasswordView(),
-          //   ContinueWithEmailView.id: (context) => ContinueWithEmailView(),
-          //   LoginWithEmail.id: (context) => LoginWithEmail(),
-          //   LoginWithEmail.id: (context) => LoginWithEmail(),
-          //   ResetPasswordView.id: (context) => ResetPasswordView(),
-          // CompleteAccount.id: (context) => CompleteAccount(),
-          //   TestImageUploadScreen.id: (context) => TestImageUploadScreen(),
-          //   TestDateScreen.id: (context) => TestDateScreen(),
+          // AddPhoneView.id: (context) => AddPhoneView(),
+          HakimAiView.id: (context) => HakimAiView(),
+          ActivitiesView.id: (context) => ActivitiesView(),
+          RemindersView.id: (context) => RemindersView(),
+          MedicalRecordView.id: (context) => MedicalRecordView(),
+          // ProfileScreen.id: (context) => const ProfileScreen(),
         },
-        initialRoute: ContinueWithPhoneView.id,
+        initialRoute: SplashView.id,
       ),
     );
   }

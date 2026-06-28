@@ -3,29 +3,28 @@ import 'package:patient_app/app_colors.dart';
 import 'package:patient_app/components/dot.dart';
 
 class ViewIndicator extends StatelessWidget {
-  final List selectedView;
+  final List<bool> selectedView;
   const ViewIndicator({super.key, required this.selectedView});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40,
       width: 120,
       decoration: BoxDecoration(
-        color: AppColors.naturalWhite,
         borderRadius: BorderRadius.circular(16),
+        color: AppColors.naturalWhite,
       ),
       child: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(16.0),
         child: Row(
-          spacing: 16,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Dot(isSelected: selectedView[0]),
-            Dot(isSelected: selectedView[1]),
-            Dot(isSelected: selectedView[2]),
-            Dot(isSelected: selectedView[3]),
-          ],
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(
+            selectedView.length,
+            (index) => Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4.0),
+              child: Dot(isSelected: selectedView[index]),
+            ),
+          ),
         ),
       ),
     );

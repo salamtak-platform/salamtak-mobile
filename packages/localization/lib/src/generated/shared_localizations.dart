@@ -499,6 +499,48 @@ abstract class SharedLocalizations {
   /// In en, this message translates to:
   /// **'تسجيل الدخول'**
   String get loginButton;
+
+  /// No description provided for @inputRequiredError.
+  ///
+  /// In en, this message translates to:
+  /// **'This field is required'**
+  String get inputRequiredError;
+
+  /// No description provided for @phoneLengthError.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number must be at least 10 digits'**
+  String get phoneLengthError;
+
+  /// No description provided for @emailVaildFormatError.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email format'**
+  String get emailVaildFormatError;
+
+  /// No description provided for @passwordLengthError.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 8 characters'**
+  String get passwordLengthError;
+
+  /// No description provided for @passwordsMatchingError.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match'**
+  String get passwordsMatchingError;
+
+  /// No description provided for @registerTokenExpiredError.
+  ///
+  /// In en, this message translates to:
+  /// **'Session expired, please start again.'**
+  String get registerTokenExpiredError;
+
+  /// No description provided for @otpValidationError.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid OTP'**
+  String get otpValidationError;
 }
 
 class _SharedLocalizationsDelegate

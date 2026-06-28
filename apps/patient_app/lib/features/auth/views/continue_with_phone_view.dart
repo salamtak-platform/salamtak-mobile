@@ -11,8 +11,9 @@ import 'package:patient_app/components/custom_text_field.dart';
 import 'package:patient_app/components/custom_main_button.dart';
 import 'package:patient_app/features/auth/cubit/auth_cubit.dart';
 import 'package:patient_app/features/auth/cubit/auth_states.dart';
-import 'package:patient_app/features/auth/views/home_view.dart';
+import 'package:patient_app/features/auth/views/continue_with_email_view.dart';
 import 'package:patient_app/features/auth/views/mobile_otp_view.dart';
+import 'package:patient_app/features/main_view.dart';
 
 enum CountryCodes { plus20 }
 
@@ -54,9 +55,6 @@ class _ContinueWithPhoneViewState extends State<ContinueWithPhoneView> {
         backgroundColor: AppColors.naturalWhite,
         appBar: AppBar(),
         body: BlocBuilder<AuthCubit, AuthState>(builder: (context, state) {
-          if (state is PhoneSearchLoadingState) {
-            return const Center(child: CircularProgressIndicator());
-          }
           return SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -80,7 +78,7 @@ class _ContinueWithPhoneViewState extends State<ContinueWithPhoneView> {
                           package: 'ui_kit',
                           fontFamily: "Baloo Bhaijaan 2",
                           fontSize: 24,
-                          fontWeight: FontWeight(500),
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                       SizedBox(height: 16),
@@ -90,7 +88,7 @@ class _ContinueWithPhoneViewState extends State<ContinueWithPhoneView> {
                           package: 'ui_kit',
                           fontFamily: "Baloo Bhaijaan 2",
                           fontSize: 16,
-                          fontWeight: FontWeight(500),
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                       SizedBox(height: 24),
@@ -106,22 +104,40 @@ class _ContinueWithPhoneViewState extends State<ContinueWithPhoneView> {
                         hint: SharedLocalizations.of(context)!.inputPhoneHint,
                         type: CustomTextFieldType.phone,
                         showError: showError,
+                        errorMessage: "رقم الهاتف غير صحيح",
                         onChanged: (data) {
                           setState(() {
                             phoneNumber = data;
                             showError = false;
                           });
                         },
-                        validator: (String? value) {},
+                        validator: (String? value) {
+                          if (value == null || value.trim().length != 11) {
+                            return "رقم الهاتف يجب أن يكون 11 رقماً";
+                          }
+                          return null;
+                        },
                       ),
                       SizedBox(height: 32),
                       CustomMainButton(
                           title: SharedLocalizations.of(context)!
                               .continueWithPhoneButton,
-                          state: MainButtonStates.enabled,
+                          state: state is PhoneSearchLoadingState
+                              ? MainButtonStates.loading
+                              : MainButtonStates.enabled,
                           isLeftIcon: false,
                           isRightIcon: false,
-                          onPressed: () {},
+                          onPressed: () {
+                            if (formKey.currentState!.validate()) {
+                              context.read<AuthCubit>().postsearchUserByPhone(
+                                    phoneNumber: phoneNumber!,
+                                  );
+                            } else {
+                              setState(() {
+                                showError = true;
+                              });
+                            }
+                          },
                           style: MainButtonStyles.primary),
                       SizedBox(height: 24),
                       CustomLabeledDivider(
@@ -141,6 +157,10 @@ class _ContinueWithPhoneViewState extends State<ContinueWithPhoneView> {
                             ),
                             CustomSocialButton(
                               platform: "email",
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, ContinueWithEmailView.id);
+                              },
                             ),
                           ],
                         ),
@@ -157,7 +177,7 @@ class _ContinueWithPhoneViewState extends State<ContinueWithPhoneView> {
                           isLeftIcon: false,
                           isRightIcon: false,
                           onPressed: () {
-                            Navigator.pushNamed(context, HomeView.id);
+                            Navigator.pushNamed(context, MainView.id);
                           },
                           style: MainButtonStyles.secondary),
                       SizedBox(height: 24),

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
 import 'package:patient_app/app_colors.dart';
+import 'package:patient_app/components/custom_main_button.dart';
 import 'package:patient_app/components/custom_onboarding_body.dart';
 import 'package:patient_app/components/onboarding_image_container.dart';
 import 'package:patient_app/components/view_indicator.dart';
+import 'package:patient_app/features/auth/views/onboarding_one_view.dart';
+import 'package:patient_app/features/auth/views/onboarding_two_view.dart';
 import 'package:patient_app/src/generated/patient_localizations.dart';
 import 'package:patient_app/features/auth/views/onboarding_four_view.dart';
 
@@ -47,10 +50,12 @@ class OnboardingThreeView extends StatelessWidget {
               mainButtonTitle: SharedLocalizations.of(context)!.onboardingNext,
               secondaryButtonTitle:
                   SharedLocalizations.of(context)!.onboardingPrev,
-              mainButtonStatus: "secondary",
-              secondaryButtonStatus: "secondary strocked",
+              mainButtonStatus: MainButtonStates.enabled,
+              secondaryButtonStatus: MainButtonStates.enabled,
+              mainButtonStyle: MainButtonStyles.tertiary,
+              secondaryButtonStyle: MainButtonStyles.tertiaryStroked,
               mainRoute: OnboardingFourView.id,
-              secondaryRoute: OnboardingThreeView.id,
+              secondaryRoute: OnboardingTwoView.id,
             ),
           ],
         ),

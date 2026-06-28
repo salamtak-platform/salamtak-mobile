@@ -221,4 +221,26 @@ class SharedLocalizationsEn extends SharedLocalizations {
 
   @override
   String get loginButton => 'تسجيل الدخول';
+
+  @override
+  String get inputRequiredError => 'This field is required';
+
+  @override
+  String get phoneLengthError => 'Phone number must be at least 10 digits';
+
+  @override
+  String get emailVaildFormatError => 'Invalid email format';
+
+  @override
+  String get passwordLengthError => 'Password must be at least 8 characters';
+
+  @override
+  String get passwordsMatchingError => 'Passwords do not match';
+
+  @override
+  String get registerTokenExpiredError =>
+      'Session expired, please start again.';
+
+  @override
+  String get otpValidationError => 'Invalid OTP';
 }

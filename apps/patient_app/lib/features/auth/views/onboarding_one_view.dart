@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
 import 'package:patient_app/app_colors.dart';
+import 'package:patient_app/components/custom_main_button.dart';
 import 'package:patient_app/components/custom_onboarding_body.dart';
 import 'package:patient_app/components/onboarding_image_container.dart';
 import 'package:patient_app/components/view_indicator.dart';
@@ -44,7 +45,8 @@ class OnboardingOneView extends StatelessWidget {
               description: PatientLocalizations.of(context)!.onboardingOneBody,
               buttonsCount: 1,
               mainButtonTitle: SharedLocalizations.of(context)!.onboardingNext,
-              mainButtonStatus: "secondary",
+              mainButtonStatus: MainButtonStates.enabled,
+              mainButtonStyle: MainButtonStyles.tertiary,
               mainRoute: OnboardingTwoView.id,
             ),
           ],

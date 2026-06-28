@@ -1,12 +1,18 @@
 import 'package:dio/dio.dart';
+import 'package:patient_app/services/auth_interceptor.dart';
 
 class ApiService {
   ApiService(this._dio, dio);
 
   final Dio _dio;
 
-  static const String baseUrl =
-      "https://salamtak-backend-production.up.railway.app/api/v1";
+  static ApiService create() {
+    final dio = Dio();
+    dio.interceptors.add(AuthInterceptor(dio));
+    return ApiService(dio, dio);
+  }
+
+  static const String baseUrl = "https://api.salamtakplatform.app/api/v1";
 
   Future<Map<String, dynamic>> get({
     required String endPoint,
@@ -58,6 +64,18 @@ class ApiService {
     );
 
     return response.data;
+  }
+
+  Future<Response<dynamic>> patchResponse({
+    required String endPoint,
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+  }) {
+    return _dio.patch(
+      "$baseUrl$endPoint",
+      data: data,
+      queryParameters: queryParameters,
+    );
   }
 
   Future<Map<String, dynamic>> delete({

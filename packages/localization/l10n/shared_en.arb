@@ -66,5 +66,12 @@
     "forgotPassButton": "هل نسيت كلمة السر؟",
     "createPassTitle": "أنشيء كلمة السر",
     "inputConfPassLabel": "تأكيد كلمة السر",
-    "loginButton": "تسجيل الدخول"
+    "loginButton": "تسجيل الدخول",
+    "inputRequiredError": "This field is required",
+    "phoneLengthError": "Phone number must be at least 10 digits",
+    "emailVaildFormatError": "Invalid email format",
+    "passwordLengthError": "Password must be at least 8 characters",
+    "passwordsMatchingError": "Passwords do not match",
+    "registerTokenExpiredError": "Session expired, please start again.",
+    "otpValidationError": "Invalid OTP"
 }

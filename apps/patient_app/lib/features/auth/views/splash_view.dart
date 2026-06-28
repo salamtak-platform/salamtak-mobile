@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:patient_app/app_colors.dart';
-import 'package:patient_app/features/auth/views/preferences_view.dart';
+import 'package:patient_app/features/auth/views/onboarding_one_view.dart';
 
 class SplashView extends StatefulWidget {
   static String id = "SplashView";
@@ -16,14 +16,7 @@ class _SplashViewState extends State<SplashView> {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
       if (!mounted) return;
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) {
-            return const PreferencesView();
-          },
-        ),
-      );
+      Navigator.pushReplacementNamed(context, OnboardingOneView.id);
     });
   }
 

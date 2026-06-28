@@ -44,7 +44,7 @@ class Label extends StatelessWidget {
                 fontFamily: "Baloo Bhaijaan 2",
                 package: 'ui_kit',
                 fontSize: 16,
-                fontWeight: FontWeight(500),
+                fontWeight: FontWeight.w500,
               ),
             ),
           ),

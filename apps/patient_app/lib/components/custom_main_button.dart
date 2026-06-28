@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:patient_app/app_colors.dart';
 
-enum MainButtonStyles { primary, secondary, tertiary, tertiaryStrocked }
+enum MainButtonStyles { primary, secondary, tertiary, tertiaryStroked }
 
 enum MainButtonStates { enabled, disabled, loading }
 
@@ -64,11 +64,11 @@ class CustomMainButton extends StatelessWidget {
     );
   }
 
-  ButtonStyle _tertiaryStrockedStyle() {
+  ButtonStyle _tertiaryStrokedStyle() {
     return ElevatedButton.styleFrom(
       foregroundColor: AppColors.naturalWhite,
-      side: BorderSide(color: AppColors.patientPrimary, width: 1),
-      minimumSize: Size(double.infinity, 48),
+      side: BorderSide(color: AppColors.naturalWhite, width: 2),
+      // minimumSize: Size(double.infinity, 48),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
@@ -103,7 +103,7 @@ class CustomMainButton extends StatelessWidget {
       textAlign: TextAlign.center,
       style: TextStyle(
         fontFamily: "Baloo Bhaijaan 2",
-        fontSize: 20,
+        fontSize: 16,
         package: 'ui_kit',
         fontWeight: FontWeight(500),
       ),
@@ -116,7 +116,8 @@ class CustomMainButton extends StatelessWidget {
           Expanded(child: text),
           FaIcon(
             leftIcon,
-            color: style == MainButtonStyles.primary
+            color: style == MainButtonStyles.primary ||
+                    style == MainButtonStyles.tertiaryStroked
                 ? AppColors.naturalWhite
                 : AppColors.patientPrimary,
             weight: 24,
@@ -131,7 +132,8 @@ class CustomMainButton extends StatelessWidget {
         children: [
           FaIcon(
             leftIcon,
-            color: style == MainButtonStyles.primary
+            color: style == MainButtonStyles.primary ||
+                    style == MainButtonStyles.tertiaryStroked
                 ? AppColors.naturalWhite
                 : AppColors.patientPrimary,
             weight: 24,
@@ -176,7 +178,7 @@ class CustomMainButton extends StatelessWidget {
                     child: _buildContent(),
                   )
                 : OutlinedButton(
-                    style: _tertiaryStrockedStyle(),
+                    style: _tertiaryStrokedStyle(),
                     onPressed: (isDisabled || isLoading) ? null : onPressed,
                     child: _buildContent(),
                   );
@@ -188,82 +190,3 @@ class CustomMainButton extends StatelessWidget {
     );
   }
 }
-
-// ## عايز اللودينج يخلي الستايل disabled
-
-// ده ممكن يحصل بطريقتين:
-
-// 1. `onPressed: null` لو `isLoading`
-// 2. تستخدم ستايل معطل بدل الستيل العادي لو `isLoading`
-
-// ---
-
-// ## التعديل اللي محتاجه
-
-// في `build()` خلي عندك:
-
-// ```dart
-// final bool isDisabled = state == MainButtonStates.disabled;
-// final bool isLoading = state == MainButtonStates.loading;
-// final bool isInactive = isDisabled || isLoading;
-// ```
-
-// وبعدين اختار ستايل حسب الحالة:
-
-// ```dart
-// final ButtonStyle styleToUse = style == MainButtonStyles.primary
-//     ? (isInactive ? _disabledFilledStyle() : _primaryStyle())
-//     : style == MainButtonStyles.secondary
-//         ? (isInactive ? _disabledStrockedStyle() : _secondaryStyle())
-//         : style == MainButtonStyles.tertiary
-//             ? (isInactive ? _disabledFilledStyle() : _tertiaryStyle())
-//             : (isInactive ? _disabledStrockedStyle() : _tertiaryStrockedStyle());
-// ```
-
-// وخلّي الزرار معطل لو `isLoading`:
-// ```dart
-// onPressed: isInactive ? null : onPressed,
-// ```
-
-// ---
-
-// ## مثال كامل مبسط
-
-// ```dart
-// final widget = style == MainButtonStyles.primary
-//     ? ElevatedButton(
-//         style: isInactive ? _disabledFilledStyle() : _primaryStyle(),
-//         onPressed: isInactive ? null : onPressed,
-//         child: _buildContent(),
-//       )
-//     : ...
-// ```
-
-// ---
-
-// ## كمان لو حابب
-
-// لو `loading` يبقى تحليل الشكل:
-// - لو `isLoading` يبقى اتكلم على طريقة _disabled style
-// - لونه يكون رمادي أو فاتح
-// - تقدر تستبدل النص بـ `CircularProgressIndicator`
-
-// ---
-
-// ## نقطة مهمة
-
-// طالما عندك:
-// ```dart
-// bool get isLoading => state == MainButtonStates.loading;
-// bool get isDisabled => state == MainButtonStates.disabled;
-// ```
-
-// فـ `isLoading` جاهز للاستخدام في أي مكان داخل الكلاس، بما في ذلك `_buildContent()`.
-
-// ---
-
-// ## الخلاصة
-
-// - `isLoading` = true → `onPressed: null`
-// - `isLoading` = true → استعمل ستايل معطل `_disabledFilledStyle()` أو `_disabledStrockedStyle()`
-// - هيتصرف الزرار كـ disabled حتى لو هو في وضع "لودينج"
